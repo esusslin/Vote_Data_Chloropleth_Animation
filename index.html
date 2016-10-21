@@ -84,6 +84,7 @@ function drawMap(us) {
     return "code_" + d.properties.id; }, true)
   .attr("d", path);
   var dataRange = getDataRange();
+  console.log(dataRange)
   d3.selectAll(".county")
   .attr('fill', function(d){
     return getColor(d.properties[attributeArray[currentAttribute]], dataRange);
@@ -92,7 +93,7 @@ function drawMap(us) {
 function sequenceMap() {
   var dataRange = getDataRange();
   d3.selectAll('.county').transition()
-    .duration(750)
+    .duration(3000)
     .attr('fill', function(d){
       return getColor(d.properties[attributeArray[currentAttribute]], dataRange);
     })
