@@ -47,7 +47,7 @@ if fips.length > 0
 
 		heads = []
 
-		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1904&datatype=town&def=1&f=0&off=0&elect=0")
+		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1980&datatype=town&def=1&f=0&off=0&elect=0")
 
 		# perks = driver.find_elements(:class, "rgt")
 		# headerz = driver.find_elements(:class, "tablesorter-header-inner")
@@ -87,85 +87,41 @@ if fips.length > 0
 
 		## GET THE LEFT-MOST % VALUE!
 
-		wwww = headers.index("Swallow")
-		www = headers.index("Parker")
-
-		ww = headers.index("Watson")
-
-		w = headers.index("Other")
-
 		x = headers.index("%Margin")
 
-		y = headers.index("Roosev.")
+		y = headers.index("Reagan")
 
-		z = headers.index("Parker")
+		z = headers.index("Carter")
 
 		eval = "-" + percs[x]
 
+		
 
 		deuce = [] 
 		# # deuce << year
 		deuce << fip
 
-		# if (headers.length < 5) && (percs[w] > percs[y]) && (percs[w] > percs[z])
+		if headers.length < 5
+			deuce << nil
 
-		# 	wally = "W" + percs[w]
-		# 	deuce << wally
-
-		if (x != nil)
-
-			deuce << percs[x]
-		else 
-			deuce << "-"
-		end
-
-		if (y != nil)
-
-			deuce << percs[y]
-		else 
-			deuce << "-"
-		end
-
-		if (z != nil)
-			deuce << percs[z]
-		else 
-			deuce << "-"
-		end
-
-		if (w != nil)
-			deuce << percs[w]
-		else 
-			deuce << "-"
-		end
-
-		if (ww != nil)
-			deuce << percs[ww]
-		else 
-			deuce << "-"
-		end
-
-		if (www != nil)
-			deuce << percs[www]
-		else 
-			deuce << "-"
-		end
-
-		if (wwww != nil)
-			deuce << percs[wwww]
-		else 
-			deuce << "-"
-		end
+			elsif (percs[y] < percs[z])
+				deuce << eval;
+			else
+				deuce << percs[x]
+			end
 
 		p deuce
 
+		# deuce << percs[x]
 		all << deuce
-
 		p all.length
+
+	 # end
 
 	end
 end
 
-CSV.open("1904.csv", "wb") do |csv|
+CSV.open("1980.csv", "wb") do |csv|
   all.each do |this|
    csv << this
   end

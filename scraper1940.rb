@@ -47,7 +47,7 @@ if fips.length > 0
 
 		heads = []
 
-		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1904&datatype=town&def=1&f=0&off=0&elect=0")
+		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1940&datatype=town&def=1&f=0&off=0&elect=0")
 
 		# perks = driver.find_elements(:class, "rgt")
 		# headerz = driver.find_elements(:class, "tablesorter-header-inner")
@@ -87,18 +87,13 @@ if fips.length > 0
 
 		## GET THE LEFT-MOST % VALUE!
 
-		wwww = headers.index("Swallow")
-		www = headers.index("Parker")
-
-		ww = headers.index("Watson")
-
 		w = headers.index("Other")
 
 		x = headers.index("%Margin")
 
-		y = headers.index("Roosev.")
+		y = headers.index("Willkie")
 
-		z = headers.index("Parker")
+		z = headers.index("Roosev.")
 
 		eval = "-" + percs[x]
 
@@ -138,24 +133,6 @@ if fips.length > 0
 			deuce << "-"
 		end
 
-		if (ww != nil)
-			deuce << percs[ww]
-		else 
-			deuce << "-"
-		end
-
-		if (www != nil)
-			deuce << percs[www]
-		else 
-			deuce << "-"
-		end
-
-		if (wwww != nil)
-			deuce << percs[wwww]
-		else 
-			deuce << "-"
-		end
-
 		p deuce
 
 		all << deuce
@@ -165,7 +142,7 @@ if fips.length > 0
 	end
 end
 
-CSV.open("1904.csv", "wb") do |csv|
+CSV.open("1940.csv", "wb") do |csv|
   all.each do |this|
    csv << this
   end

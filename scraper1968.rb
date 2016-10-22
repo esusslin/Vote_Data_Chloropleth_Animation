@@ -14,7 +14,7 @@ years = ['1912','1916','1920','1924','1924','1928','1932','1936','1940', '1944',
 
 lol = (years.length * 3200)
 
-CSV.foreach("fips.csv") do |row|
+CSV.foreach("fips48.csv") do |row|
 
 	join = row[0] + row[1]
 	join.to_i
@@ -47,7 +47,7 @@ if fips.length > 0
 
 		heads = []
 
-		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1904&datatype=town&def=1&f=0&off=0&elect=0")
+		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=1968&datatype=town&def=1&f=0&off=0&elect=0")
 
 		# perks = driver.find_elements(:class, "rgt")
 		# headerz = driver.find_elements(:class, "tablesorter-header-inner")
@@ -86,22 +86,15 @@ if fips.length > 0
 		p headers
 
 		## GET THE LEFT-MOST % VALUE!
-
-		wwww = headers.index("Swallow")
-		www = headers.index("Parker")
-
-		ww = headers.index("Watson")
-
-		w = headers.index("Other")
+		w = headers.index("Wallace")
 
 		x = headers.index("%Margin")
 
-		y = headers.index("Roosev.")
+		y = headers.index("Nixon")
 
-		z = headers.index("Parker")
+		z = headers.index("Humphr.")
 
 		eval = "-" + percs[x]
-
 
 		deuce = [] 
 		# # deuce << year
@@ -138,34 +131,45 @@ if fips.length > 0
 			deuce << "-"
 		end
 
-		if (ww != nil)
-			deuce << percs[ww]
-		else 
-			deuce << "-"
-		end
+		# if (headers.length < 5) && (x == nil || y == nil) 
 
-		if (www != nil)
-			deuce << percs[www]
-		else 
-			deuce << "-"
-		end
+		# 		wally = ("W" + percs[x].to_s)
+		# 		deuce << wally;
 
-		if (wwww != nil)
-			deuce << percs[wwww]
-		else 
-			deuce << "-"
-		end
+		# 	elsif (x == nil)
+
+		# 		wally = ("W" + percs[x].to_s)
+
+		# 	elsif (y == nil)
+
+		# 		wally = ("W" + percs[x].to_s)
+
+
+		# 	elsif ((percs[w].to_i > percs[y].to_i) && (percs[w].to_i > percs[z].to_i))
+
+		# 		wally = ("W" + percs[x].to_s)
+		# 		deuce << wally;
+
+		# 	elsif (percs[y] < percs[z])
+		# 		deuce << eval;
+		# 	elsif (percs[z] < percs[y])
+		# 		deuce << percs[x];
+		# 	else
+		# 		deuce << "fuck"
+		# 	end
 
 		p deuce
 
+		# deuce << percs[x]
 		all << deuce
-
 		p all.length
+
+	 # end
 
 	end
 end
 
-CSV.open("1904.csv", "wb") do |csv|
+CSV.open("1968_48.csv", "wb") do |csv|
   all.each do |this|
    csv << this
   end
