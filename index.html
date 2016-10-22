@@ -51,7 +51,7 @@ function setMap() {
 function loadData() {
   queue()
       .defer(d3.json, "us.json")
-      .defer(d3.csv, "all.csv")
+      .defer(d3.csv, "all2.csv")
       .await(processData);
 }
 function processData(error, us, countyData) {
@@ -87,7 +87,7 @@ function drawMap(us) {
   console.log(dataRange)
   d3.selectAll(".county")
   .attr('fill', function(d){
-    return getColor(d.properties[attributeArray[currentAttribute]], dataRange);
+    return getColor(d.properties[attributeArray[currentAttribute]]);
   });
 }
 function sequenceMap() {
@@ -95,13 +95,14 @@ function sequenceMap() {
   d3.selectAll('.county').transition()
     .duration(3000)
     .attr('fill', function(d){
-      return getColor(d.properties[attributeArray[currentAttribute]], dataRange);
+      return getColor(d.properties[attributeArray[currentAttribute]]);
     })
 }
-function getColor(valueIn, valuesIn) {
-  var color = d3.scale.linear()
-  .domain([valuesIn[0], valuesIn[1]])
-  .range(['red', 'blue']);
+function getColor(valueIn) {
+  var color = d3.scale.threshold()
+  // .domain([valuesIn[0], valuesIn[1]])
+  .domain([-99, -96, -92, -88, -84, -80, -76, -72, -68, -64, -60, -56, -52, -48,-44, -40, -36, -32, -28, -24, -20, -16, -12, -8, -4, 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 99, 100])
+  .range(['rgb(255,0,0)','rgb(250,0,5)','rgb(245,0,10)','rgb(240,0,15)','rgb(235,0,20)','rgb(230,0,25)','rgb(225,0,30)','rgb(220,0,35)','rgb(215,0,40)','rgb(210,0,45)','rgb(205,0,50)','rgb(200,0,55)','rgb(195,0,60)','rgb(190,0,65)','rgb(185,0,70)','rgb(180,0,75)','rgb(175,0,80)','rgb(170,0,85)','rgb(165,0,90)','rgb(160,0,95)','rgb(155,0,100)','rgb(150,0,105)','rgb(145,0,110)','rgb(135,0,115)','rgb(130,0,120)','rgb(125,0,125)','rgb(120,0,130)','rgb(115,0,135)','rgb(110,0,140)','rgb(105,0,145)','rgb(100,0,150)','rgb(95,0,155)','rgb(90,0,160)','rgb(85,0,165)','rgb(80,0,170)','rgb(75,0,175)','rgb(70,0,180)','rgb(65,0,185)','rgb(60,0,190)','rgb(55,0,200)','rgb(50,0,205)','rgb(45,0,210)','rgb(40,0,215)','rgb(35,0,220)','rgb(30,0,225)','rgb(25,0,230)','rgb(15,0,240)','rgb(10,0,245)','rgb(5,0,250)','rgb(0,0,255)','rgb(192,192,192)']);
   return color(valueIn)
 }
 function getDataRange(){
