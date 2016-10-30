@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+    <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,18 +10,17 @@
 
   <link rel="stylesheet" href="css/style.css" media="screen" />
   
-  <script src="js/jquery.timelinr-0.9.6.js"></script>
+  <script src="js/jquery.timelinr-0.9.54.js"></script>
 
   <script> 
-  $(function(){
+    $(function(){
       $().timelinr({
-        arrowKeys: 'true'
+        autoPlay: 'false',
+        autoPlayDirection: 'forward'
       })
     });
+  </script>
 
-</script>
-
- 
 </head>
 <body>
 
@@ -48,20 +47,7 @@
      </div>
      </div>
 
-     <div id="row2"
-     <div class="row2">
-        <div class="col-sm-2" "label1" text-color="blue">
-             </a>Dem</span>
-        </div>
-        
-        <div class="col-sm-2" "label2" text-color="red">
-            </a>Pub</span>
-        </div>
 
-        <div class="col-sm-2" "label3" text-color="green">
-             </a>Otra</span>
-        </div>
-        </div>
 
     <div id="timeline">
     <ul id="dates">
@@ -241,6 +227,25 @@ function animateMap(){
         
         
 
+function autoPlay(){
+  var currentDate = $(settings.datesDiv).find('a.'+settings.datesSelectedClass);
+  if(settings.autoPlayDirection == 'forward') {
+    if(currentDate.parent().is('li:last-child')) {
+      $(settings.datesDiv+' li:first-child').find('a').trigger('click');
+    } else {
+      console.log(currentDate)
+      currentDate.parent().next().find('a').trigger('click');
+    }
+  } else if(settings.autoPlayDirection == 'backward') {
+    if(currentDate.parent().is('li:first-child')) {
+      $(settings.datesDiv+' li:last-child').find('a').trigger('click');
+    } else {
+
+      currentDate.parent().prev().find('a').trigger('click');
+    }
+  }
+}
+        var currentDate = $(settings.datesDiv).find('a.'+settings.datesSelectedClass);
         d3.select('#clock').html(attributeArray[currentAttribute]);
         setPics();
         sequenceMap();
