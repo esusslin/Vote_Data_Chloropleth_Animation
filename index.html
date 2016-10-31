@@ -9,19 +9,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="css/style.css" media="screen" />
-  
-  <script src="js/jquery.timelinr-0.9.6.js"></script>
 
-  <script> 
-  $(function(){
-      $().timelinr({
-        arrowKeys: 'true'
-      })
-    });
 
-</script>
 
- 
 </head>
 <body>
 
@@ -29,85 +19,23 @@
 
 
    <div id="map"></div>
-      <button id="play">play</button>
-      <span id="clock">year</span>
+      <input id="slider" type="range" min="1912" max="2012" value="1912" step="4" />
+      <span id="range">1912</span>
 
-  <div id="row">
-  <div class="row">
-        <div class="col-sm-2">
-             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
-        </div>
-        
-        <div class="col-sm-2">
-            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
-        </div>
 
-        <div class="col-sm-2">
-             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
-        </div>
-     </div>
-     </div>
-
-     <div id="row2"
-     <div class="row2">
-        <div class="col-sm-2" "label1" text-color="blue">
-             </a>Dem</span>
-        </div>
-        
-        <div class="col-sm-2" "label2" text-color="red">
-            </a>Pub</span>
-        </div>
-
-        <div class="col-sm-2" "label3" text-color="green">
-             </a>Otra</span>
-        </div>
-        </div>
-
-    <div id="timeline">
-    <ul id="dates">
-      <li><a href="#1912">1912</a></li>
-      <li><a href="#1916">1916</a></li>
-      <li><a href="#1920">1920</a></li>
-      <li><a href="#1924">1924</a></li>
-      <li><a href="#1928">1928</a></li>
-      <li><a href="#1932">1932</a></li>
-      <li><a href="#1936">1936</a></li>
-      <li><a href="#1940">1940</a></li>
-      <li><a href="#1944">1944</a></li>
-      <li><a href="#1948">1948</a></li>
-      <li><a href="#1952">1952</a></li>
-      <li><a href="#1956">1956</a></li>
-      <li><a href="#1960">1960</a></li>
-      <li><a href="#1964">1964</a></li>
-      <li><a href="#1968">1968</a></li>
-      <li><a href="#1972">1972</a></li>
-      <li><a href="#1976">1976</a></li>
-      <li><a href="#1980">1980</a></li>
-      <li><a href="#1984">1984</a></li>
-      <li><a href="#1988">1988</a></li>
-      <li><a href="#1992">1992</a></li>
-      <li><a href="#1996">1996</a></li>
-      <li><a href="#2000">2000</a></li>
-      <li><a href="#2004">2004</a></li>
-      <li><a href="#2008">2008</a></li>
-      <li><a href="#2012">2012</a></li>
-    </ul>
-    <div id="grad_left"></div>
-    <div id="grad_right"></div>
-<!--     <a href="#" id="next">+</a>
-    <a href="#" id="prev">-</a> -->
-    </div>
-  </div> <!--row
-
-      
-
-      <img src="pics\bush.jpg" class="img-circle" alt="Cinque Terre" width="100" height="100"> -->
-  </div>
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
 <script src="//d3js.org/queue.v1.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="/js/html5slider.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+</script>
 <script>
 var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
 function init() {
@@ -116,7 +44,7 @@ function init() {
   setAvatars();
 }
 function setMap() {
- 
+
   width = 960, height = 600;
   projection = d3.geo.albersUsa()
       .scale(1000)
@@ -150,13 +78,13 @@ function setMap() {
 }
 
 function setAvatars() {
-  
+
 }
 
 function loadData() {
   queue()
       .defer(d3.json, "us.json")
-      .defer(d3.csv, "all_hex.csv")
+      .defer(d3.csv, "datasofar24.csv")
       .await(processData);
 }
 function processData(error, us, countyData) {
@@ -198,18 +126,12 @@ function drawMap(us) {
 
 
 function sequenceMap() {
-
   d3.selectAll('.county').transition()
     .duration(1000)
     .attr('fill', function(d){
       return '#' + d.properties[attributeArray[currentAttribute]];
-    })
+    });
 
-    // .each("end", function() {
-    //     sequencePics();
-    // });
-
-    // sequencePics();
 }
 
 function setPics() {
@@ -219,7 +141,7 @@ function setPics() {
     pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
     pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
     pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-   
+
         d3.select('#pic1').attr("src",pic1path);
         // d3.select('#label1').html('Woodrow Wilson');
         d3.select('#pic2').attr("src",pic2path);
@@ -228,6 +150,10 @@ function setPics() {
 }
 
 function animateMap(){
+$('#slider').on('input', function(){
+  $('#range')[0].innerHTML = $(this)[0].value;
+  console.log($('#range'));
+})
   var timer;
   d3.select('#play')
   .on('click', function(){
@@ -238,14 +164,14 @@ function animateMap(){
         } else {
           currentAttribute = 0;
         }
-        
-        
+
+
 
         d3.select('#clock').html(attributeArray[currentAttribute]);
         setPics();
         sequenceMap();
-      }, 1000);
-      
+      }, 2000);
+
       // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
       d3.select(this).html('stop');
       playing = true;
