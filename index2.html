@@ -11,8 +11,15 @@
     <link rel="stylesheet" href="css/style.css" media="screen" />
   </head>
   <body>
-    <div id="wrapper">
-      <div id="map"></div>
+    <div id="wrapper" >
+      <div id="map" class="row">
+        <div id="side_panel">
+          <img id="d_prez" src="pics/1912/D.JPG"></img>
+          <img id= "r_prez" src="pics/1912/R.JPG"></img>
+          <img id= "o_prez" src="pics/1912/O.JPG"></img>
+        </div>
+      </div>
+
       <input id="slider" type="range" min="1912" max="2012" value="1912" step="4" />
       <span id="range">1912</span>
 
@@ -33,13 +40,14 @@
 
       function init() {
         setMap();
+        setPics();
         //animateMap();
         //setAvatars();
       }
 
       function setMap() {
 
-        width = 960, height = 600;
+        width = 852, height = 550;
         projection = d3.geo.albersUsa()
             .scale(1000)
             .translate([width / 2, height / 2]);
@@ -103,9 +111,12 @@
          d3.selectAll('.county').transition()
           .duration(1000)
           .attr('fill', function(d){
-            console.log(d);
             return '#' + d.properties[year];
           });
+          $('#d_prez').attr('src', 'pics/' + year.toString() + '/D.jpg');
+          $('#r_prez').attr('src', 'pics/' + year.toString() + '/R.jpg');
+          $('#o_prez').attr('src', 'pics/' + year.toString() + '/O.jpg');
+
       }
 
       function sequenceMap() {
