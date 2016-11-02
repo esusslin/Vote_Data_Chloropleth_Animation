@@ -66,7 +66,8 @@ jQuery.fn.timelinr = function(options){
 			var currentIndex = $(this).parent().prevAll().length;
 			// moving the elements
 			if(settings.orientation == 'horizontal') {
-				$(settings.issuesDiv).animate({'marginLeft':-widthIssue*currentIndex},{queue:false, duration:settings.issuesSpeed});
+				
+				
 			} else if(settings.orientation == 'vertical') {
 				$(settings.issuesDiv).animate({'marginTop':-heightIssue*currentIndex},{queue:false, duration:settings.issuesSpeed});
 			}
