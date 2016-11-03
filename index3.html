@@ -110,21 +110,9 @@ function setMap() {
   svg = d3.select("#map").append("svg")
       .attr("width", width)
       .attr("height", height);
-  // svg.append("circle")
-  //   .data(circleData)
-  //   .enter()
-  //   .append("circle");
-  // pic1 = svg.append("svg:image")
-  //  .attr('x', 400)
-  //  .attr('y', 400)
-  //  .attr('width', 100)
-  //  .attr('height', 100)
-  //  .attr("xlink:href","pics/D.jpg");
+
   loadData();
-  // svg = d3.select("#map").append("svg")
-  //     .attr("width", width)
-  //     .attr("height", height);
-  // loadData();
+
 }
 function setAvatars() {
   
@@ -182,15 +170,7 @@ function sequenceMap() {
 }
 function setPics() {
   console.log(currentAttribute)
-    pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-    pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-    pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-   
-        d3.select('#pic1').attr("src",pic1path);
-        // d3.select('#label1').html('Woodrow Wilson');
-        d3.select('#pic2').attr("src",pic2path);
-        // d3.select('#label2').html('William Howard Taft');
-        d3.select('#pic3').attr("src",pic3path);
+    
 }
 function animateMap(){
   var timer;
@@ -224,9 +204,23 @@ function autoPlay(){
 }
         var currentDate = $(settings.datesDiv).find('a.'+settings.datesSelectedClass);
         d3.select('#clock').html(attributeArray[currentAttribute]);
-        setPics();
+        pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+        pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+        pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+   
+        d3.select('#pic1').transition()
+          .duration(3000)
+          .attr("src",pic1path);
+        // d3.select('#label1').html('Woodrow Wilson');
+        d3.select('#pic2').transition()
+          .duration(3000) 
+          .attr("src",pic2path);
+        // d3.select('#label2').html('William Howard Taft');
+        d3.select('#pic3')
+          .duration(3000) 
+          .attr("src",pic3path);
         sequenceMap();
-      }, 1000);
+      }, 3000);
       
       // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
       d3.select(this).html('stop');

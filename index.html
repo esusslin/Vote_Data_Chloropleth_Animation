@@ -24,39 +24,36 @@
 </head>
 <body>
 
-<div id="wrapper" >
-      <div id="map" class=".col-sm-8 .col-sm-pull-4">
-      </div>
-        <div id="side_panel" class=".col-sm-4 .col-sm-push-8">
-        <img id="pic1" src="pics/1912/D.JPG" class="img-circle" alt="Cinque Terre" width="60" height="60"></a>Dem</span>
-        <img id="pic2" src="pics/1912/R.JPG" class="img-circle" alt="Cinque Terre" width="60" height="60"></a>Pub</span>
-        <img id="pic3" src="pics/1912/O.JPG" class="img-circle" alt="Cinque Terre" width="60" height="60"></a>Other</span>   
-      </div>
-      </div>
 
 
 
-     <!--  <div id="map"></div> -->
-      <button id="play">play</button>
-      <span id="clock">year</span>
 
-<!--   <div id="row">
-  <div class="row">
-        <div class="col-sm-2">
-             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+<div class="row">
+   <div id="map" class="col-md-9"></div>
+
+   <div id="pics" class="col-md-3">
+
+
+        <div class="row" id="row1">
+        <div class="pic1">
+             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>DEM</span>
         </div>
         
-        <div class="col-sm-2">
-            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+        <div class="pic2">
+            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>PUB</span>
+        </div>
         </div>
 
-        <div class="col-sm-2">
-             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+        <div class="row" id="row2">
+        <div class="pic3">
+             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>OTRA</span>
         </div>
-     </div>
-     </div> -->
+        </div>
+      </div>
+</div>
 
-
+      <button id="play">play</button>
+      <span id="clock">year</span>
 
     <div id="timeline">
     <ul id="dates">
@@ -87,17 +84,10 @@
       <li><a id="2008">2008</a></li>
       <li><a id="2012">2012</a></li>
     </ul>
-<!--     <div id="grad_left"></div>
-    <div id="grad_right"></div> -->
-<!--     <a id="#" id="next">+</a>
-    <a id="#" id="prev">-</a> -->
-<!--     </div> -->
-  </div> <!--row
 
-      
 
-      <img src="pics\bush.jpg" class="img-circle" alt="Cinque Terre" width="100" height="100"> -->
-  </div>
+      </div>
+<!--   </div> -->
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
@@ -122,26 +112,8 @@ function setMap() {
       .attr("width", width)
       .attr("height", height);
 
-  // svg.append("circle")
-  //   .data(circleData)
-  //   .enter()
-  //   .append("circle");
-
-  // pic1 = svg.append("svg:image")
-  //  .attr('x', 400)
-  //  .attr('y', 400)
-  //  .attr('width', 100)
-  //  .attr('height', 100)
-  //  .attr("xlink:href","pics/D.jpg");
-
-
-
   loadData();
 
-  // svg = d3.select("#map").append("svg")
-  //     .attr("width", width)
-  //     .attr("height", height);
-  // loadData();
 }
 
 function setAvatars() {
@@ -194,6 +166,8 @@ function drawMap(us) {
 
 function sequenceMap() {
 
+
+
   d3.selectAll('.county').transition()
     .duration(1000)
     .attr('fill', function(d){
@@ -209,17 +183,37 @@ function sequenceMap() {
 
 function setPics() {
 
-  console.log(currentAttribute)
-
     pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
     pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
     pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+
+
+        $('#pic1').fadeOut(300, function() {
+          $('#pic1').attr("src",pic1path);
+          $('#pic1').fadeIn(300);
+        });
+
+        $('#pic2').fadeOut(300, function() {
+          $('#pic2').attr("src",pic2path);
+          $('#pic2').fadeIn(300);
+        });
+
+        $('#pic3').fadeOut(300, function() {
+          $('#pic3').attr("src",pic3path);
+          $('#pic3').fadeIn(300);
+        });
+
+  
+        sequenceMap();
+    // pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+    // pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+    // pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
    
-        d3.select('#pic1').attr("src",pic1path);
-        // d3.select('#label1').html('Woodrow Wilson');
-        d3.select('#pic2').attr("src",pic2path);
-        // d3.select('#label2').html('William Howard Taft');
-        d3.select('#pic3').attr("src",pic3path);
+    //     d3.select('#pic1').attr("src",pic1path);
+    //     // d3.select('#label1').html('Woodrow Wilson');
+    //     d3.select('#pic2').attr("src",pic2path);
+    //     // d3.select('#label2').html('William Howard Taft');
+    //     d3.select('#pic3').attr("src",pic3path);
 }
 
 function animateMap(){
@@ -246,9 +240,11 @@ function animateMap(){
         $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
         $(id).addClass(settings.datesSelectedClass);
         $('#clock').html(attributeArray[currentAttribute]);
+
+
         setPics();
-        sequenceMap();
-      }, 1000);
+        
+      }, 2000);
       
       // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
       d3.select(this).html('stop');
