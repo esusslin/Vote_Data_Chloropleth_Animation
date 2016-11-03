@@ -24,70 +24,69 @@
 </head>
 <body>
 
+  <div id="wrapper">
 
 
-
-
-<div class="row">
-   <div id="map" class="col-md-9"></div>
-
-   <div id="pics" class="col-md-3">
-
-
-        <div class="row" id="row1">
-        <div class="pic1">
-             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>DEM</span>
-        </div>
-        
-        <div class="pic2">
-            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>PUB</span>
-        </div>
-        </div>
-
-        <div class="row" id="row2">
-        <div class="pic3">
-             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>OTRA</span>
-        </div>
-        </div>
-      </div>
-</div>
-
+   <div id="map"></div>
       <button id="play">play</button>
       <span id="clock">year</span>
 
+  <div id="row">
+  <div class="row">
+        <div class="col-sm-2">
+             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+        </div>
+        
+        <div class="col-sm-2">
+            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+        </div>
+
+        <div class="col-sm-2">
+             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="100" height="100"></a></span>
+        </div>
+     </div>
+     </div>
+
+
+
     <div id="timeline">
     <ul id="dates">
-      <li><a id="1912">1912</a></li>
-      <li><a id="1916">1916</a></li>
-      <li><a id="1920">1920</a></li>
-      <li><a id="1924">1924</a></li>
-      <li><a id="1928">1928</a></li>
-      <li><a id="1932">1932</a></li>
-      <li><a id="1936">1936</a></li>
-      <li><a id="1940">1940</a></li>
-      <li><a id="1944">1944</a></li>
-      <li><a id="1948">1948</a></li>
-      <li><a id="1952">1952</a></li>
-      <li><a id="1956">1956</a></li>
-      <li><a id="1960">1960</a></li>
-      <li><a id="1964">1964</a></li>
-      <li><a id="1968">1968</a></li>
-      <li><a id="1972">1972</a></li>
-      <li><a id="1976">1976</a></li>
-      <li><a id="1980">1980</a></li>
-      <li><a id="1984">1984</a></li>
-      <li><a id="1988">1988</a></li>
-      <li><a id="1992">1992</a></li>
-      <li><a id="1996">1996</a></li>
-      <li><a id="2000">2000</a></li>
-      <li><a id="2004">2004</a></li>
-      <li><a id="2008">2008</a></li>
-      <li><a id="2012">2012</a></li>
+      <li><a href="#1912">1912</a></li>
+      <li><a href="#1916">1916</a></li>
+      <li><a href="#1920">1920</a></li>
+      <li><a href="#1924">1924</a></li>
+      <li><a href="#1928">1928</a></li>
+      <li><a href="#1932">1932</a></li>
+      <li><a href="#1936">1936</a></li>
+      <li><a href="#1940">1940</a></li>
+      <li><a href="#1944">1944</a></li>
+      <li><a href="#1948">1948</a></li>
+      <li><a href="#1952">1952</a></li>
+      <li><a href="#1956">1956</a></li>
+      <li><a href="#1960">1960</a></li>
+      <li><a href="#1964">1964</a></li>
+      <li><a href="#1968">1968</a></li>
+      <li><a href="#1972">1972</a></li>
+      <li><a href="#1976">1976</a></li>
+      <li><a href="#1980">1980</a></li>
+      <li><a href="#1984">1984</a></li>
+      <li><a href="#1988">1988</a></li>
+      <li><a href="#1992">1992</a></li>
+      <li><a href="#1996">1996</a></li>
+      <li><a href="#2000">2000</a></li>
+      <li><a href="#2004">2004</a></li>
+      <li><a href="#2008">2008</a></li>
+      <li><a href="#2012">2012</a></li>
     </ul>
-
-
-      </div>
-<!--   </div> -->
+    <div id="grad_left"></div>
+    <div id="grad_right"></div>
+<!--     <a href="#" id="next">+</a>
+    <a href="#" id="prev">-</a> -->
+    </div>
+  </div> <!--row
+      
+      <img src="pics\bush.jpg" class="img-circle" alt="Cinque Terre" width="100" height="100"> -->
+  </div>
 
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
@@ -115,15 +114,13 @@ function setMap() {
   loadData();
 
 }
-
 function setAvatars() {
   
 }
-
 function loadData() {
   queue()
       .defer(d3.json, "us.json")
-      .defer(d3.csv, "datasofar24.csv")
+      .defer(d3.csv, "all_hex.csv")
       .await(processData);
 }
 function processData(error, us, countyData) {
@@ -155,67 +152,26 @@ function drawMap(us) {
   .attr("id", function(d){
     return "code_" + d.properties.id; }, true)
   .attr("d", path);
-
-
   d3.selectAll(".county")
   .attr('fill', function(d){
     return '#' + d.properties[attributeArray[currentAttribute]];
   });
 }
-
-
 function sequenceMap() {
-
-
-
   d3.selectAll('.county').transition()
     .duration(1000)
     .attr('fill', function(d){
       return '#' + d.properties[attributeArray[currentAttribute]];
     })
-
     // .each("end", function() {
     //     sequencePics();
     // });
-
     // sequencePics();
 }
-
 function setPics() {
-
-    pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-    pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-    pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-
-
-        $('#pic1').fadeOut(300, function() {
-          $('#pic1').attr("src",pic1path);
-          $('#pic1').fadeIn(300);
-        });
-
-        $('#pic2').fadeOut(300, function() {
-          $('#pic2').attr("src",pic2path);
-          $('#pic2').fadeIn(300);
-        });
-
-        $('#pic3').fadeOut(300, function() {
-          $('#pic3').attr("src",pic3path);
-          $('#pic3').fadeIn(300);
-        });
-
-  
-        sequenceMap();
-    // pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-    // pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-    // pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-   
-    //     d3.select('#pic1').attr("src",pic1path);
-    //     // d3.select('#label1').html('Woodrow Wilson');
-    //     d3.select('#pic2').attr("src",pic2path);
-    //     // d3.select('#label2').html('William Howard Taft');
-    //     d3.select('#pic3').attr("src",pic3path);
+  console.log(currentAttribute)
+    
 }
-
 function animateMap(){
   var timer;
   d3.select('#play')
@@ -227,24 +183,44 @@ function animateMap(){
         } else {
           currentAttribute = 0;
         }
-
-       
-        var widthDate = $(settings.datesDiv+' li').width();
-        console.log(widthDate)
-        var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
-        console.log(defaultPositionDates)
-        id = '#' + attributeArray[currentAttribute]
-        var currentIndex = $(id).parent().prevAll().length;
-        console.log(currentIndex)
-        $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
-        $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
-        $(id).addClass(settings.datesSelectedClass);
-        $('#clock').html(attributeArray[currentAttribute]);
-
-
-        setPics();
         
-      }, 2000);
+        
+function autoPlay(){
+  var currentDate = $(settings.datesDiv).find('a.'+settings.datesSelectedClass);
+  if(settings.autoPlayDirection == 'forward') {
+    if(currentDate.parent().is('li:last-child')) {
+      $(settings.datesDiv+' li:first-child').find('a').trigger('click');
+    } else {
+      console.log(currentDate)
+      currentDate.parent().next().find('a').trigger('click');
+    }
+  } else if(settings.autoPlayDirection == 'backward') {
+    if(currentDate.parent().is('li:first-child')) {
+      $(settings.datesDiv+' li:last-child').find('a').trigger('click');
+    } else {
+      currentDate.parent().prev().find('a').trigger('click');
+    }
+  }
+}
+        var currentDate = $(settings.datesDiv).find('a.'+settings.datesSelectedClass);
+        d3.select('#clock').html(attributeArray[currentAttribute]);
+        pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+        pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+        pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+   
+        d3.select('#pic1').transition()
+          .duration(3000)
+          .attr("src",pic1path);
+        // d3.select('#label1').html('Woodrow Wilson');
+        d3.select('#pic2').transition()
+          .duration(3000) 
+          .attr("src",pic2path);
+        // d3.select('#label2').html('William Howard Taft');
+        d3.select('#pic3')
+          .duration(3000) 
+          .attr("src",pic3path);
+        sequenceMap();
+      }, 3000);
       
       // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
       d3.select(this).html('stop');
