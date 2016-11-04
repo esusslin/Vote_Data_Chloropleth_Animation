@@ -1,5 +1,5 @@
 body {
-  background: #333;
+  background: black;
   font-family: Georgia, serif;
   color: #fff;
   font-size: 14px;
@@ -9,7 +9,7 @@ html {
   margin:0;
   padding:0;
   color:#000;
-  background:#a7a09a;
+  background: black
 }
 
 #wrap {
@@ -37,23 +37,24 @@ padding:0;
 #main {
   float:left;
   width:75%;
-  background:#9c9;
+  background: black;
+  border-right: 2px solid;
+}
+
+#map {
+  position: relative;
 }
 
 #sidebar {
   float:right;
   width: 25%;
-  background:#c9c;
+  background: black;
 }
 
 #sidebar img {
-  margin-top: 15%;
+  margin-top: 30%;
   margin-left: 20%;
   margin-right: 20%;
   display: inline-block;
 }
 
-#footer {
-  clear:both;
-  background:#cc9;
-}
