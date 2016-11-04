@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Presidential Election Results By County</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="//d3js.org/queue.v1.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header"></div>
+      <div id="nav"></div>
+      <div id="main">
+        <div id="map"></div>
+      </div>
+      <div id="sidebar">
+        <div>
+          <button id="play">Play</button>
+          <span id="clock">year</span>
+        </div>
+        <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></img><span>Democrat</span>
+
+        <img src="pics\1912\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></img><span>Republican</span>
+
+        <img src="pics\1912\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></img><span>Other</span>
+      </div>
+      <div id="footer">
+    <script type="text/javascript">
+      var width, height, projection, path, svg, graticule, attributeArray = [], currentAttribute = 0, playing = false;
+      function init() {
+        setMap();
+        animateMap();
+        // setPics();
+      }
+
+      function setMap(){
+        width = 960, height = 600;
+        projection = d3.geo.albersUsa()
+            .scale(1000)
+            .translate([width / 2, height / 2]);
+        path = d3.geo.path()
+            .projection(projection);
+        svg = d3.select("#map").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        loadData();
+      }
+
+      function loadData(){
+        queue()
+            .defer(d3.json, "us.json")
+            .defer(d3.csv, "datasofar24.csv")
+            .await(processData);
+      }
+
+      function processData(error, us, countyData) {
+        var counties = us.objects.counties.geometries;
+        for (var i in counties) {
+          counties[i].properties = {"id": counties[i].id};
+          for (var j in countyData) {
+            if (counties[i].properties.id == countyData[j].id) {
+              for(var k in countyData[i]) {
+                if(k != 'name' && k != "id") {
+                  if(attributeArray.indexOf(k) == -1 ) {
+                    attributeArray.push(k);
+                  }
+                  counties[i].properties[k] = countyData[j][k];
+                }
+              }
+              break;
+            }
+          }
+        }
+        d3.select('#clock').html(attributeArray[currentAttribute]);
+        drawMap(us);
+      }
+
+      function drawMap(us){
+        svg.selectAll(".county")
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter().append("path")
+        .attr("class", "county")
+        .attr("id", function(d){
+          return "code_" + d.properties.id; }, true)
+        .attr("d", path);
+
+
+        d3.selectAll(".county")
+        .attr('fill', function(d){
+          return '#' + d.properties[attributeArray[currentAttribute]];
+        });
+      }
+
+      function animateMap(){
+        var timer;
+        d3.select('#play')
+        .on('click', function(){
+          if(playing == false) {
+            timer = setInterval(function(){
+              if(currentAttribute < attributeArray.length - 1) {
+                currentAttribute += 1;
+              } else {
+                currentAttribute = 0;
+              }
+               sequenceMap();
+                d3.select('#clock').html(attributeArray[currentAttribute]);
+                setPics();
+              }, 2000);
+
+              d3.select(this).html('stop');
+              playing = true;
+            } else {
+              clearInterval(timer);
+              d3.select(this).html('play');
+              playing = false;
+            }
+          });
+      }
+
+      function sequenceMap(){
+        d3.selectAll('.county').transition()
+          .duration(2000)
+          .attr('fill', function(d){
+            return "#" + d.properties[attributeArray[currentAttribute]];
+          });
+      }
+
+      function setPics(){
+        pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+        pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+        pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+
+        $('#pic1').fadeOut(600, function() {
+          $('#pic1').attr("src",pic1path);
+          $('#pic1').fadeIn(600);
+        });
+
+        $('#pic2').fadeOut(600, function() {
+          $('#pic2').attr("src",pic2path);
+          $('#pic2').fadeIn(600);
+        });
+
+        $('#pic3').fadeOut(600, function() {
+          console.log(pic3path);
+          $('#pic3').attr("src",pic3path);
+          $('#pic3').fadeIn(600);
+        });
+      }
+
+
+      window.onload = init();
+    </script>
+      </div>
+    </div>
+  </body>
+</html>

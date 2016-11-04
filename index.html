@@ -6,20 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
   <link rel="stylesheet" href="css/style.css" media="screen" />
-  
-  <script src="js/jquery.timelinr-0.9.54.js"></script>
-
-  <script> 
-    $(function(){
-      $().timelinr({
-        autoPlay: 'false',
-        autoPlayDirection: 'forward'
-      })
-    });
-  </script>
 
 </head>
 <body>
@@ -38,7 +27,7 @@
         <div class="pic1">
              <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>DEM</span>
         </div>
-        
+
         <div class="pic2">
             <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>PUB</span>
         </div>
@@ -101,7 +90,7 @@ function init() {
   setAvatars();
 }
 function setMap() {
- 
+
   width = 960, height = 600;
   projection = d3.geo.albersUsa()
       .scale(1000)
@@ -117,7 +106,7 @@ function setMap() {
 }
 
 function setAvatars() {
-  
+
 }
 
 function loadData() {
@@ -148,6 +137,7 @@ function processData(error, us, countyData) {
   drawMap(us);
 }
 function drawMap(us) {
+  console.log(us);
   svg.selectAll(".county")
   .data(topojson.feature(us, us.objects.counties).features)
   .enter().append("path")
@@ -203,12 +193,12 @@ function setPics() {
           $('#pic3').fadeIn(300);
         });
 
-  
+
         sequenceMap();
     // pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
     // pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
     // pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-   
+
     //     d3.select('#pic1').attr("src",pic1path);
     //     // d3.select('#label1').html('Woodrow Wilson');
     //     d3.select('#pic2').attr("src",pic2path);
@@ -228,7 +218,7 @@ function animateMap(){
           currentAttribute = 0;
         }
 
-       
+
         var widthDate = $(settings.datesDiv+' li').width();
         console.log(widthDate)
         var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
@@ -243,9 +233,9 @@ function animateMap(){
 
 
         setPics();
-        
+
       }, 2000);
-      
+
       // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
       d3.select(this).html('stop');
       playing = true;
