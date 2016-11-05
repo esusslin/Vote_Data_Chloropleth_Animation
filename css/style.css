@@ -13,17 +13,37 @@ html {
   background: black
 }
 
+#play-button {
+  font-size: 2em;
+  margin-left: 40%;
+}
+
+#dem-span {
+  color: blue;
+
+}
+
+#rep-span {
+  color: red;
+}
+
+#other-span {
+  color: green;
+}
+
+
 #pics {
 
-   	padding-top: 200px;
-   	padding-bottom: 160px;
+   	padding-top: 130px;
+   	padding-bottom: 130px;
   	display: flex;
-    
+
     flex-direction: column;
    	justify-content: space-around;
     width: 250px; /*Put your desired width*/
     height: 600px;
 }
+
 
 #normals {
 /*	flex-direction: row;
@@ -71,18 +91,6 @@ padding:0;
   position: relative;
 }
 
-#sidebar {
-  float:right;
-  width: 25%;
-  background: black;
-}
-
-#sidebar img {
-  margin-top: 30%;
-  margin-left: 20%;
-  margin-right: 20%;
-  display: inline-block;
-}
 
 #clock-button{
 	font-size: 2.5em;
@@ -155,8 +163,8 @@ h1,h2,h4,h5,h6 {
 				#dates .selected {
 			        font-size: 38px;
 				}
-		
-		
+
+
 		#grad_left,
 		#grad_right {
 			width: 100px;
@@ -172,7 +180,7 @@ h1,h2,h4,h5,h6 {
 		        right: 0;
 		        background: url('../images/grad_right.png') repeat-y;
 			}
-		
+
 		#next,
 		#prev {
 			position: absolute;

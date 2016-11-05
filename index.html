@@ -1,258 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <script src="js/jquery.timelinr-0.9.54.js"></script>
+    <script>
+      $(function(){
+        $().timelinr({
+          autoPlay: 'false',
+          autoPlayDirection: 'forward'
+        })
+      });
+    </script>
+  </head>
 
-  <link rel="stylesheet" href="css/style.css" media="screen" />
-  <script src="js/jquery.timelinr-0.9.54.js"></script>
-
-  <script> 
-    $(function(){
-      $().timelinr({
-        autoPlay: 'false',
-        autoPlayDirection: 'forward'
-      })
-    });
-  </script>
-
-</head>
-<body>
-
-
-
-<div class="row">
-   <div id="map" class="col-md-9"></div>
-
-   <div id="pics" class="col-md-3">
-
-
-        
-         
-             <img src="pics\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>Dem</span>
-
-            <img src="pics\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>Pub</span>
-          
-             <img src="pics\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></a>Otra</span>
-            
-        
-        
-      </div>
-</div>
-
-
-        
-      
-<!-- </div> -->
-
+  <body>
+    <div id="play-button">
       <button id="play">play</button>
       <span id="clock">year</span>
+    </div>
 
-    <div id="timeline">
+  <div class="row">
+    <div id="map" class="col-md-9"></div>
+    <div id="pics" class="col-md-3">
+        <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
+        <span id="dem-name">Woodrow Wilson</span><span id="dem-span"><br>6,294,284<br><br></span>
+
+      <img src="pics\1912\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
+      <span id="rep-name">William Taft</span><span id="rep-span"><br>3,487,937<br><br></span>
+
+      <img src="pics\1912\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
+      <span id="other">Theodore Roosevelt & Others</span><span id="other-span"><br>5,263,325<br><br></span>
+
+    </div>
+
+  </div>
+
+  <div id="timeline">
     <ul id="dates">
-      <li><a id="1912">1912</a></li>
-      <li><a id="1916">1916</a></li>
-      <li><a id="1920">1920</a></li>
-      <li><a id="1924">1924</a></li>
-      <li><a id="1928">1928</a></li>
-      <li><a id="1932">1932</a></li>
-      <li><a id="1936">1936</a></li>
-      <li><a id="1940">1940</a></li>
-      <li><a id="1944">1944</a></li>
-      <li><a id="1948">1948</a></li>
-      <li><a id="1952">1952</a></li>
-      <li><a id="1956">1956</a></li>
-      <li><a id="1960">1960</a></li>
-      <li><a id="1964">1964</a></li>
-      <li><a id="1968">1968</a></li>
-      <li><a id="1972">1972</a></li>
-      <li><a id="1976">1976</a></li>
-      <li><a id="1980">1980</a></li>
-      <li><a id="1984">1984</a></li>
-      <li><a id="1988">1988</a></li>
-      <li><a id="1992">1992</a></li>
-      <li><a id="1996">1996</a></li>
-      <li><a id="2000">2000</a></li>
-      <li><a id="2004">2004</a></li>
-      <li><a id="2008">2008</a></li>
-      <li><a id="2012">2012</a></li>
+        <li><a id="1912">1912</a></li>
+        <li><a id="1916">1916</a></li>
+        <li><a id="1920">1920</a></li>
+        <li><a id="1924">1924</a></li>
+        <li><a id="1928">1928</a></li>
+        <li><a id="1932">1932</a></li>
+        <li><a id="1936">1936</a></li>
+        <li><a id="1940">1940</a></li>
+        <li><a id="1944">1944</a></li>
+        <li><a id="1948">1948</a></li>
+        <li><a id="1952">1952</a></li>
+        <li><a id="1956">1956</a></li>
+        <li><a id="1960">1960</a></li>
+        <li><a id="1964">1964</a></li>
+        <li><a id="1968">1968</a></li>
+        <li><a id="1972">1972</a></li>
+        <li><a id="1976">1976</a></li>
+        <li><a id="1980">1980</a></li>
+        <li><a id="1984">1984</a></li>
+        <li><a id="1988">1988</a></li>
+        <li><a id="1992">1992</a></li>
+        <li><a id="1996">1996</a></li>
+        <li><a id="2000">2000</a></li>
+        <li><a id="2004">2004</a></li>
+        <li><a id="2008">2008</a></li>
+        <li><a id="2012">2012</a></li>
     </ul>
+  </div>
 
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+  <script src="//d3js.org/queue.v1.min.js"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script>
+  var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
 
-      </div>
-<!--   </div> -->
+  var facts = [
+    {"1912": {"D": ["Woodrow Wilson", "6,294,284"], "R": ["William Taft", "3,487,937"], "O": ["Theodore Roosevelt & Others", "5263325"]}},
+    {"1916":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1920":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1924":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1928":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1932":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1936":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1940":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1944":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1948":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1952":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1956":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1960":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1964":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1968":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1972":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1976":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1980":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1984":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1988":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1992":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"1996":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"2000":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"2004":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"2008":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    {"2012":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
+    ]
 
-<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
-<script src="//d3js.org/queue.v1.min.js"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script>
-var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
-function init() {
-  setMap();
-  animateMap();
-  setAvatars();
-}
-function setMap() {
- 
-  width = 960, height = 600;
-  projection = d3.geo.albersUsa()
-      .scale(1000)
-      .translate([width / 2, height / 2]);
-  path = d3.geo.path()
-      .projection(projection);
-  svg = d3.select("#map").append("svg")
-      .attr("width", width)
-      .attr("height", height);
+  function init() {
+    setMap();
+    // animateMap();
+    // setAvatars();
+  }
+  function setMap() {
 
-  loadData();
+    width = 960, height = 600;
+    projection = d3.geo.albersUsa()
+        .scale(1000)
+        .translate([width / 2, height / 2]);
+    path = d3.geo.path()
+        .projection(projection);
+    svg = d3.select("#map").append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
-}
+    loadData();
 
-function setAvatars() {
-  
-}
+  }
 
-function loadData() {
-  queue()
-      .defer(d3.json, "us.json")
-      .defer(d3.csv, "datasofar24.csv")
-      .await(processData);
-}
-function processData(error, us, countyData) {
-  var counties = us.objects.counties.geometries;
-  for (var i in counties) {
-    counties[i].properties = {"id": counties[i].id};
-    for (var j in countyData) {
-      if (counties[i].properties.id == countyData[j].id) {
-        for(var k in countyData[i]) {
-          if(k != 'name' && k != "id") {
-            if(attributeArray.indexOf(k) == -1 ) {
-              attributeArray.push(k);
+  function setAvatars() {
+
+  }
+
+  function loadData() {
+    queue()
+        .defer(d3.json, "us.json")
+        .defer(d3.csv, "datasofar24.csv")
+        .await(processData);
+  }
+  function processData(error, us, countyData) {
+    var counties = us.objects.counties.geometries;
+    for (var i in counties) {
+      counties[i].properties = {"id": counties[i].id};
+      for (var j in countyData) {
+        if (counties[i].properties.id == countyData[j].id) {
+          for(var k in countyData[i]) {
+            if(k != 'name' && k != "id") {
+              if(attributeArray.indexOf(k) == -1 ) {
+                attributeArray.push(k);
+              }
+              counties[i].properties[k] = countyData[j][k];
             }
-            counties[i].properties[k] = countyData[j][k];
           }
+          break;
         }
-        break;
       }
     }
+    d3.select('#clock').html(attributeArray[currentAttribute]);
+    drawMap(us);
   }
-  d3.select('#clock').html(attributeArray[currentAttribute]);
-  drawMap(us);
-}
-function drawMap(us) {
-  svg.selectAll(".county")
-  .data(topojson.feature(us, us.objects.counties).features)
-  .enter().append("path")
-  .attr("class", "county")
-  .attr("id", function(d){
-    return "code_" + d.properties.id; }, true)
-  .attr("d", path);
 
+  function drawMap(us) {
+    svg.selectAll(".county")
+    .data(topojson.feature(us, us.objects.counties).features)
+    .enter().append("path")
+    .attr("class", "county")
+    .attr("id", function(d){
+      return "code_" + d.properties.id; }, true)
+    .attr("d", path);
 
-  d3.selectAll(".county")
-  .attr('fill', function(d){
-    return '#' + d.properties[attributeArray[currentAttribute]];
-  });
-}
-
-
-function sequenceMap() {
-
-
-
-  d3.selectAll('.county').transition()
-    .duration(1000)
+    d3.selectAll(".county")
     .attr('fill', function(d){
       return '#' + d.properties[attributeArray[currentAttribute]];
-    })
+    });
+  }
 
-    // .each("end", function() {
-    //     sequencePics();
-    // });
+  function sequenceMap() {
+    d3.selectAll('.county').transition()
+      .duration(1000)
+      .attr('fill', function(d){
+        return '#' + d.properties[attributeArray[currentAttribute]];
+      })
+  }
 
-    // sequencePics();
-}
+  function setPics() {
+      pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+      pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+      pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+      current_year = attributeArray[currentAttribute].toString();
+      var counter = 1
 
-function setPics() {
+          $('#pic1').fadeOut(300, function() {
+            $('#pic1').attr("src",pic1path);
+            $('#pic1').fadeIn(300);
+            $('#dem-span').html(facts[counter][current_year]["D"][0]);
+            counter += 1
+          });
 
-    pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-    pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-    pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+          $('#pic2').fadeOut(300, function() {
+            $('#pic2').attr("src",pic2path);
+            $('#pic2').fadeIn(300);
+          });
 
-
-        $('#pic1').fadeOut(300, function() {
-          $('#pic1').attr("src",pic1path);
-          $('#pic1').fadeIn(300);
-        });
-
-        $('#pic2').fadeOut(300, function() {
-          $('#pic2').attr("src",pic2path);
-          $('#pic2').fadeIn(300);
-        });
-
-        $('#pic3').fadeOut(300, function() {
-          $('#pic3').attr("src",pic3path);
-          $('#pic3').fadeIn(300);
-        });
-
-  
-        sequenceMap();
-    // pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-    // pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-    // pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-   
-    //     d3.select('#pic1').attr("src",pic1path);
-    //     // d3.select('#label1').html('Woodrow Wilson');
-    //     d3.select('#pic2').attr("src",pic2path);
-    //     // d3.select('#label2').html('William Howard Taft');
-    //     d3.select('#pic3').attr("src",pic3path);
-}
-
-function animateMap(){
-  var timer;
-  d3.select('#play')
-  .on('click', function(){
-    if(playing == false) {
-      timer = setInterval(function(){
-        if(currentAttribute < attributeArray.length - 1) {
-          currentAttribute += 1;
-        } else {
-          currentAttribute = 0;
-        }
-
-       
-        var widthDate = $(settings.datesDiv+' li').width();
-        console.log(widthDate)
-        var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
-        console.log(defaultPositionDates)
-        id = '#' + attributeArray[currentAttribute]
-        var currentIndex = $(id).parent().prevAll().length;
-        console.log(currentIndex)
-        $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
-        $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
-        $(id).addClass(settings.datesSelectedClass);
-        $('#clock').html(attributeArray[currentAttribute]);
+          $('#pic3').fadeOut(300, function() {
+            $('#pic3').attr("src",pic3path);
+            $('#pic3').fadeIn(300);
+          });
 
 
-        setPics();
-        
-      }, 2000);
-      
-      // d3.select('#pic1').attr("src","http://upload.wikimedia.org/wikipedia/commons/b/b0/NewTux.svg");
-      d3.select(this).html('stop');
-      playing = true;
-    } else {
-      clearInterval(timer);
-      d3.select(this).html('play');
-      playing = false;
-    }
-  });
-}
-window.onload = init();
-</script>
-</body>
+          sequenceMap();
+  }
+
+  function animateMap(){
+    var timer;
+    d3.select('#play')
+    .on('click', function(){
+      if(playing == false) {
+        timer = setInterval(function(){
+          if(currentAttribute < attributeArray.length - 1) {
+            currentAttribute += 1;
+          } else {
+            currentAttribute = 0;
+          }
+
+
+          var widthDate = $(settings.datesDiv+' li').width();
+          console.log(widthDate)
+          var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
+          console.log(defaultPositionDates)
+          id = '#' + attributeArray[currentAttribute]
+          var currentIndex = $(id).parent().prevAll().length;
+          console.log(currentIndex)
+          $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
+          $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
+          $(id).addClass(settings.datesSelectedClass);
+          $('#clock').html(attributeArray[currentAttribute]);
+
+
+          setPics();
+
+        }, 2000);
+
+        d3.select(this).html('stop');
+        playing = true;
+      } else {
+        clearInterval(timer);
+        d3.select(this).html('play');
+        playing = false;
+      }
+    });
+  }
+  window.onload = init();
+  </script>
+  </body>
+</html>
