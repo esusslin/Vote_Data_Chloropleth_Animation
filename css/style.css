@@ -1,7 +1,3 @@
-{
-	margin: 0;
-	padding: 0;
-}
 
 body {
 	background: #222;
@@ -10,43 +6,87 @@ body {
 	font-size: 14px;
 }
 
-.wrapper
-{
-    margin: 0 auto;
-    max-width: 1216px;
+html {
+  margin:0;
+  padding:0;
+  color:#000;
+  background: black
 }
 
-.pics {
+#pics {
 
-   
-  	overflow: hidden;
-  	
+   	padding-top: 200px;
+   	padding-bottom: 160px;
+  	display: flex;
+    
+    flex-direction: column;
+   	justify-content: space-around;
+    width: 250px; /*Put your desired width*/
+    height: 600px;
+}
 
+#normals {
+/*	flex-direction: row;
+	justify-content: space-between;*/
+	width: 100px; /*Put your desired width*/
+    height: 100px;
+}
+
+#third {
+	/*justify-content: center;*/
+	width: 100px; /*Put your desired width*/
+    height: 100px;
 }
 
 .map {
-
-   
-  overflow: hidden;
-/*  display: inline-block*/
-
+    display: flex;
+    width: 960; /*Put your desired width*/
+    height: 600; /*Put your desired height */
+    overflow: hidden;
 }
 
-.row1 {
-	  display: inline-block
+
+
+
+#nav ul {
+margin:0;
+padding:0;
+list-style:none;
 }
 
-.pic1 {
-	margin-top: 2cm;
-	
+#nav li {
+display:inline;
+margin:0;
+padding:0;
 }
 
-.pic2 {
-	/*margin-top: 6cm;*/
+#main {
+  float:left;
+  width:75%;
+  background: black;
+  border-right: 1px solid gray;
 }
 
-.pic3 {
-	margin-top: 6cm;
+#map {
+  position: relative;
+}
+
+#sidebar {
+  float:right;
+  width: 25%;
+  background: black;
+}
+
+#sidebar img {
+  margin-top: 30%;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: inline-block;
+}
+
+#clock-button{
+	font-size: 2.5em;
+	margin-left: 40%;
 }
 
 #side_panel {
