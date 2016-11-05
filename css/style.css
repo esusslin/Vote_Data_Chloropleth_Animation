@@ -47,6 +47,7 @@ html {
 
 #pics img {
   padding-top: 15px;
+  filter: grayscale(100%);
 }
 
 .map {
