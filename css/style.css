@@ -19,15 +19,17 @@ html {
 }
 
 #dem-span {
+  font-size: 1.25em;
   color: blue;
-
 }
 
 #rep-span {
+  font-size: 1.25em;
   color: red;
 }
 
 #other-span {
+  font-size: 1.25em;
   color: green;
 }
 
