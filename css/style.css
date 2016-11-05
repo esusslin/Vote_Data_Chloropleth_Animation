@@ -33,7 +33,6 @@ html {
 
 
 #pics {
-
    	padding-top: 130px;
    	padding-bottom: 130px;
   	display: flex;
@@ -44,18 +43,8 @@ html {
     height: 600px;
 }
 
-
-#normals {
-/*	flex-direction: row;
-	justify-content: space-between;*/
-	width: 100px; /*Put your desired width*/
-    height: 100px;
-}
-
-#third {
-	/*justify-content: center;*/
-	width: 100px; /*Put your desired width*/
-    height: 100px;
+#pics img {
+  padding-top: 15px;
 }
 
 .map {

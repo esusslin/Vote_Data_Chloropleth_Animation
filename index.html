@@ -35,7 +35,7 @@
       <span id="rep-name">William Taft</span><span id="rep-span"><br>3,487,937<br><br></span>
 
       <img src="pics\1912\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
-      <span id="other">Theodore Roosevelt & Others</span><span id="other-span"><br>5,263,325<br><br></span>
+      <span id="other-name">Theodore Roosevelt & Others</span><span id="other-span"><br>5,263,325<br><br></span>
 
     </div>
 
@@ -79,39 +79,38 @@
   <script>
   var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
 
-  var facts = [
-    {"1912": {"D": ["Woodrow Wilson", "6,294,284"], "R": ["William Taft", "3,487,937"], "O": ["Theodore Roosevelt & Others", "5263325"]}},
-    {"1916":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1920":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1924":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1928":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1932":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1936":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1940":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1944":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1948":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1952":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1956":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1960":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1964":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1968":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1972":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1976":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1980":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1984":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1988":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1992":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"1996":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"2000":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"2004":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"2008":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    {"2012":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]}},
-    ]
+  var facts = {
+    "1912": {"D": ["Woodrow Wilson", "6,294,284"], "R": ["William Taft", "3,487,937"], "O": ["Theodore Roosevelt & Others", "5,263,325"]},
+    "1916":{"D": ["Woodrow Wilson", "9,130,861"], "R": ["Charles Hughes", "8,549,700"] , "O": ["Other", "860,757"]},
+    "1920":{"D": ["James Cox", "9,140,256"], "R": ["Warren Harding", "16,166,126"] , "O": ["Other", "1,481,843"]},
+    "1924":{"D": ["John Davis", "8,384,341"], "R": ["Calvin Coolidge", "15,719,068"] , "O": ["Robert LaFollette & Others", "4,989,215"]},
+    "1928":{"D": ["Alfred Smith", "15,015,863"], "R": ["Herbert Hoover", "21,428,584"] , "O": ["Other", "364,514"]},
+    "1932":{"D": ["Franklin Roosevelt", "22,821,513"], "R": ["Herbert Hoover", "15,761,532"] , "O": ["Other", "1,169,409"]},
+    "1936":{"D": ["Franklin Roosevelt", "27,757,431"], "R": ["Alfred Landon", "16,683,574"] , "O": ["Other", "1,213,383"]},
+    "1940":{"D": ["Franklin Roosevelt", "27,314,449"], "R": ["Wendell Willlkie", "22,348,343"] , "O": ["Other", "250,060"]},
+    "1944":{"D": ["Franklin Roosevelt", "25,612,916"], "R": ["Thomas Dewey", "22,017,929"] , "O": ["Other", "346,247"]},
+    "1948":{"D": ["Harry Truman", "24,179,347"], "R": ["Thomas Dewey", "21,991,292"] , "O": ["Strom Thurmond & Others", "2,624,071"]},
+    "1952":{"D": ["Adlai Stevenson", "27,375,090"], "R": ["Dwight Eisenhower", "34,075,529"] , "O": ["Other", "301,323"]},
+    "1956":{"D": ["Adlai Stevenson", "26,028,028"], "R": ["Dwight Eisenhower", "35,579,180"] , "O": ["Other", "414,771"]},
+    "1960":{"D": ["John Kennedy", "34,220,984"], "R": ["Richard Nixon", "34,108,157"] , "O": ["Other", "503,342"]},
+    "1964":{"D": ["Lyndon Johnson", "43,129,040"], "R": ["Barry Goldwater", "27,175,754"] , "O": ["Other", "336,745"]},
+    "1968":{"D": ["Hubert Humphrey", "31,271,839"], "R": ["Richard Nixon", "31,783,783"] , "O": ["George Wallace & Others", "10,144,377"]},
+    "1972":{"D": ["George McGovern", "29,173,222"], "R": ["Richard Nixon", "47,168,710"] , "O": ["Other", "1,402,098"]},
+    "1976":{"D": ["Jimmy Carter", "40,831,881"], "R": ["Gerald Ford", "39,148,634"] , "O": ["Other", "1,560,265"]},
+    "1980":{"D": ["Jimmy Carter", "35,480,115"], "R": ["Ronald Reagan", "43,903,230"] , "O": ["John Anderson & Others", "7,126,333"]},
+    "1984":{"D": ["Walter Mondale", "37,577,352"], "R": ["Ronald Reagan", "54,455,472"] , "O": ["Other", "620,409"]},
+    "1988":{"D": ["Michael Dukakis", "41,809,476"], "R": ["George Bush", "48,886,597"] , "O": ["Other", "898,613"]},
+    "1992":{"D": ["Bill Clinton", "44,909,806"], "R": ["George Bush", "39,104,550"] , "O": ["Ross Perot & Others", "20,412,255"]},
+    "1996":{"D": ["Bill Clinton", "47,400,125"], "R": ["Bob Dole", "39,198,755"] , "O": ["Other", "9,676,760"]},
+    "2000":{"D": ["Al Gore", "51,009,810"], "R": ["George W. Bush", "50,462,412"], "O": ["Ralph Nader & Others", "3,953,763"]},
+    "2004":{"D": ["John Kerry", "59,027,115"], "R": ["George W. Bush", "62,039,572"], "O": ["Ralph Nader & Others", "1,236,903"]},
+    "2008":{"D": ["Barack Obama", "69,499,428"], "R": ["John McCain", "59,950,323"], "O": ["Ralph Nader & Others", "2,023,954"]},
+    "2012":{"D": ["Barack Obama", "65,918,507"], "R": ["Mitt Romney", "60,934,407"], "O": ["Other", "2,384,728"]}
+      }
 
   function init() {
     setMap();
-    // animateMap();
-    // setAvatars();
+    animateMap();
   }
   function setMap() {
 
@@ -126,10 +125,6 @@
         .attr("height", height);
 
     loadData();
-
-  }
-
-  function setAvatars() {
 
   }
 
@@ -182,25 +177,29 @@
       .attr('fill', function(d){
         return '#' + d.properties[attributeArray[currentAttribute]];
       })
+       current_year = attributeArray[currentAttribute].toString();
+            $('#dem-name').html(facts[current_year]["D"][0]);
+            $('#dem-span').html("<br>" + facts[current_year]["D"][1] + "<br><br>");
+            $('#rep-name').html(facts[current_year]["R"][0]);
+            $('#rep-span').html("<br>" + facts[current_year]["R"][1] + "<br><br>");
+            $('#other-name').html(facts[current_year]["O"][0]);
+            $('#other-span').html("<br>" + facts[current_year]["O"][1] + "<br><br>");
   }
 
   function setPics() {
       pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
       pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
       pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
-      current_year = attributeArray[currentAttribute].toString();
-      var counter = 1
 
           $('#pic1').fadeOut(300, function() {
             $('#pic1').attr("src",pic1path);
             $('#pic1').fadeIn(300);
-            $('#dem-span').html(facts[counter][current_year]["D"][0]);
-            counter += 1
           });
 
           $('#pic2').fadeOut(300, function() {
             $('#pic2').attr("src",pic2path);
             $('#pic2').fadeIn(300);
+
           });
 
           $('#pic3').fadeOut(300, function() {
@@ -226,12 +225,9 @@
 
 
           var widthDate = $(settings.datesDiv+' li').width();
-          console.log(widthDate)
           var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
-          console.log(defaultPositionDates)
           id = '#' + attributeArray[currentAttribute]
           var currentIndex = $(id).parent().prevAll().length;
-          console.log(currentIndex)
           $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
           $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
           $(id).addClass(settings.datesSelectedClass);
