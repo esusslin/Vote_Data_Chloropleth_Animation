@@ -13,6 +13,12 @@ html {
   background: black
 }
 
+#events {
+	padding-top: 10px;
+   	float: right;
+   	height: 300; 
+}
+
 #play-button {
   font-size: 2em;
   margin-left: 40%;
@@ -36,17 +42,17 @@ html {
 
 #pics {
    	padding-top: 130px;
-   	padding-bottom: 130px;
+   	padding-bottom: 10px;
   	display: flex;
 
     flex-direction: column;
-   	justify-content: space-around;
+   	/*justify-content: space-around;*/
     width: 250px; /*Put your desired width*/
-    height: 600px;
+    height: 400px;
 }
 
 #pics img {
-  padding-top: 15px;
+  padding-top: 10px;
   filter: grayscale(100%);
 }
 

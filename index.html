@@ -28,7 +28,8 @@
   <div class="row">
     <div id="map" class="col-md-9"></div>
     <div id="pics" class="col-md-3">
-        <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
+
+        <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80c" height="80"></img>
         <span id="dem-name">Woodrow Wilson</span><span id="dem-span"><br>6,294,284<br><br></span>
 
       <img src="pics\1912\R.jpg" id="pic2" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
@@ -38,6 +39,15 @@
       <span id="other-name">Theodore Roosevelt & Others</span><span id="other-span"><br>5,263,325<br><br></span>
 
     </div>
+
+          <div id="events" class="col-md-3">
+              <h2 id="event1">EVENT #1</h2>
+
+             <h2 id="event2">EVENT #2</h2>
+
+             <h2 id="event3">EVENT #2</h2>
+             </div>   
+</div>
 
   </div>
 
@@ -184,7 +194,32 @@
             $('#rep-span').html("<br>" + facts[current_year]["R"][1] + "<br><br>");
             $('#other-name').html(facts[current_year]["O"][0]);
             $('#other-span').html("<br>" + facts[current_year]["O"][1] + "<br><br>");
+            
   }
+
+  function sequenceEvents() {
+
+  n = 0
+
+  events = ["March 4, 1913: 17th Amendment is ratified, providing for the direct election of U.S. senators by popular vote rather than by the state legislatures", "August 15, 1914: Panama Canal Opens", "August 15, 1914: First long distance telephone connects New York and San Francisco"]
+
+  // "April 6, 1917: U.S. enters World War I"
+  $('#event1').text(events[0]).hide();
+  $('#event2').text(events[1]).hide();
+  $('#event3').text(events[2]).hide();
+
+ console.log(events[1])
+  $("#event1").fadeIn(2000, function() {
+      $("#event2").fadeIn(2000, function() {
+            $("#event3").fadeIn(2000, function() {
+            
+    
+        });
+   
+      });
+  });
+
+}
 
   function setPics() {
       pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
@@ -207,7 +242,7 @@
             $('#pic3').fadeIn(300);
           });
 
-
+          sequenceEvents();
           sequenceMap();
   }
 
@@ -233,10 +268,13 @@
           $(id).addClass(settings.datesSelectedClass);
           $('#clock').html(attributeArray[currentAttribute]);
 
+        $('#event1').fadeOut();
+        $('#event2').fadeOut();
+        $('#event3').fadeOut();
 
           setPics();
 
-        }, 2000);
+        }, 6000);
 
         d3.select(this).html('stop');
         playing = true;
