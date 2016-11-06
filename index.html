@@ -26,7 +26,8 @@
     </div>
 
   <div class="row">
-    <div id="map" class="col-md-9"></div>
+    <div id="map" class="col-md-9">
+    </div>
     <div id="pics" class="col-md-3">
 
         <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80c" height="80"></img>
@@ -37,14 +38,17 @@
 
       <img src="pics\1912\O.jpg" id="pic3" class="img-circle" alt="Cinque Terre" width="80" height="80"></img>
       <span id="other-name">Theodore Roosevelt & Others</span><span id="other-span"><br>5,263,325<br><br></span>
-
+        <div id="eventDiv">
+          <!-- <h2 id="event1">EVENT #1</h2> -->
+          </div>
     </div>
 
            
 </div>
 
   </div>
-<div class="row">
+
+  <!-- <h2 id="event1">EVENT #1</h2> -->
   <div id="timeline" class="col-md-7">
     <ul id="dates">
         <li><a id="1912">1912</a></li>
@@ -76,7 +80,7 @@
     </ul>
   </div>
 
-  <div id="events" class="col-md-3">
+<!--   <div id="events" class="col-md-3">
               <h2 id="event1">EVENT #1</h2>
 
              <h2 id="event2">EVENT #2</h2>
@@ -84,7 +88,7 @@
              <h2 id="event3">EVENT #2</h2>
              </div>  
 
-             </div>
+             </div> -->
 
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
@@ -94,45 +98,44 @@
   var width, height, projection, path, graticule, svg, attributeArray = [], currentAttribute = 0, playing = false;
 
    var events = {
- "1912": ["March 4, 1913: 17th Amendment is ratified, providing for the direct election of U.S. senators by popular vote rather than by the state legislatures", "August 15, 1914: Panama Canal Opens", "August 15, 1914: First long distance telephone connects New York and San Francisco"],
 
- "1916": ["May 15, 1917: First regular airmail service begins, with one round trip a day between Washington, DC, and New York", "November 7, 1916: Jeannette Rankin of Montana is the first woman elected to the U.S. House of Representatives"," Worldwide influenza epidemic strikes; by 1920, nearly 20 million are dead worldwide - In U.S., 500,000 perish."],
+ "1916": ["May 15, 1917: First regular airmail service begins, with one round trip a day between Washington, DC, and New York", "1920: Worldwide influenza epidemic strikes. Nearly 20 million people die worldwide - 500,000 in the U.S."],
 
- "1920": ["July 2, 1920: Pres. Warren G. Harding signs resolution declaring peace with Austria and Germany", "August 2, 1923: President Harding dies suddenly. He is succeeded by his vice president, Calvin Coolidge.", ""],
+ "1920": ["July 2, 1920: Pres. Warren G. Harding signs resolution declaring peace with Austria and Germany", "August 2, 1923: President Harding dies suddenly. He is succeeded by his vice president, Calvin Coolidge", ""],
 
- "1924": ["May 10, 1924: J. Edgar Hoover was appointed director of the Bureau of Investigation", "May 20-21, 1927: Charles Lindbergh makes the first solo nonstop transatlantic flight in his plane The Spirit of St. Louis", ""],
+ "1924": ["May 10, 1924: J. Edgar Hoover is appointed director of the Bureau of Investigation", "May 20-21, 1927: Charles Lindbergh makes the first solo nonstop transatlantic flight in his plane The Spirit of St. Louis", ""],
 
- "1928": ["October 29, 1929: Stock market crash precipitates the Great Depression", "May 1, 1931: The Empire State Building opened in New York City", "January 12, 1932: Hattie Wyatt Caraway of Arkansas is the first woman elected to the U.S. Senate, to fill a vacancy caused by the death of her husband"],
+ "1928": ["October 29, 1929: Stock market crash precipitates the Great Depression", "May 1, 1931: The Empire State Building opened in New York City", "January 12, 1932: Hattie Wyatt Caraway of Arkansas is the first woman elected to the U.S. Senate"],
 
- "1932": ["March - June, 1933: New Deal recovery measures are enacted by Congress", "December 5, 1933: The Constitution is ratified, repealing Prohibition", "August 14, 1935: Social Security Act is passed"],
+ "1932": ["March-June, 1933: New Deal recovery measures are enacted by Congress", "August 14, 1935: Social Security Act is passed"],
 
-  "1936": ["June 25, 1938: Fair Labor Standards Act is passed, setting the first minimum wage in the U.S. at 25 cents per hour", "September 5, 1939: World War II: U.S. declares its neutrality in European conflict", ""],
+  "1936": ["June 5, 1938: Fair Labor Standards Act is passed, setting the first minimum wage in the U.S. at 25 cents per hour", "June 25, 1938: Fair Labor Standards Act is passed, setting the first minimum wage in the U.S. at 25 cents per hour", "September 5, 1939: World War II: U.S. declares its neutrality in European conflict"],
 
-  "1940": ["December 7, 1941: Japan attacks Pearl Harber - US enters World War II", "Sept-Dec 1943: Allies invade Italy", "June 6, 1944: Allies invade France on D-Day"],
+  "1940": ["December 7, 1941: Japan attacks Pearl Harber - US enters World War II", "August 13, 1942: The Manhattan Project begins", "June 6, 1944: U.S. and allies invade France on D-Day"],
 
-  "1944": ["April 12, 1945: President Roosevelt dies of a stroke (April 12) and is succeeded by vice president Harry Truman", "May 7, 1945: Germany surrenders unconditionally", "August 1945: US drops atomic bombs on Hiroshima and Nagasaki - Japan surrenders", "1945: United Nations is established"],
+  "1944": ["April 12, 1945: President Roosevelt dies of a stroke (April 12) - President Harry Truman is sworn in", "May 7, 1945: Germany surrenders unconditionally", "August 1945: US drops atomic bombs on Hiroshima and Nagasaki - Japan surrenders"],
 
-  "1948": ["June 24, 1948: Soviets begin blockade of Berlin in the first major crisis of the cold war", "June 27, 1950: President Truman, without the approval of Congress, commits American troops to Korea", "April 11, 1951: President Truman removes Gen. Douglas MacArthur as head of U.S. Far East Command"],
+  "1948": ["948: President Harry S. Truman was reelected to a second term, defeating New York Governor Thomas E. Dewey, and South Carolina Governor Strom Thurmond, in what is regarded as one of the biggest upsets in American political history", "June 24, 1948: Soviets begin blockade of Berlin in the first major crisis of the cold war", "June 27, 1950: President Truman, without the approval of Congress, commits American troops to Korea"],
 
-  "1952": ["May 17, 1954: Brown v. Board of Education: The Supreme Court declared that state laws establishing separate public schools for black and white students, and denying black children equal educational opportunities, were unconstitutional", "1954: Senator Joe McCarthy happened", "1955: Emmitt Till's murder and Rosa Parks' arrest are among events that propelled the African-American Civil Rights Movement"],
+  "1952": ["May 17, 1954: Brown v. Board of Education: The Supreme Court declares that state laws establishing separate public schools for black and white students, and denying black children equal educational opportunities, were unconstitutional", "April 12, 1955: The announcement that the polio vaccine developed by Jonas Salk was found to be 'safe, effective and potent' was made by the University of Michigan.", "June 9, 1954: Senator McCarthy was nationally discredited after failing to provide credible evidence supporting accusations of communist activity in the U.S. government", "1955: the African-American Civil Rights Movement is propelled by events such as the murder of Emmitt Till and the arrest and of Rosa Parks"],
 
-  "1956": ["September 9, 1957: The Civil Rights Act of 1957, primarily a voting rights bill, is signed into law", "1959: Hawaii and Alaska are admitted to the Union", "May 6, 1960: The Civil Rights Act of 1960, establishing federal inspection of local voter registration polls and penalties for those attempting to obstruct the right to vote, was signed into law"],
+  "1956": ["1959: Hawaii and Alaska are admitted to the Union", "May 6, 1960: The Civil Rights Act of 1960, establishing federal inspection of local voter registration polls and penalties for those attempting to obstruct the right to vote, was signed into law"],
 
-  "1960": ["October 1962: Cuban missile crisis: A nuclear confrontation took place between the United States and the Soviet Union", "April 16, 1963: Letter from a Birmingham Jail: Dr. King was arrested amid the Birmingham campaign, writing an open letter defending the strategy nonviolent protest", "November 22, 1963: President John F. Kennedy is assassinated by a sniper in Dallas, Texas - Vice President Lyndon B. Johnson is sworn in as President", "July 2, 1964: The Civil Rights Act of 1964, outlawing both segregation and major forms of discrimination against blacks and women, was signed into law", "August 4, 1964: The bodies of three missing civil rights activists, working to register voters as a part of the Freedom Summer, were found near Philadelphia, Mississippi"],
+  "1960": ["October 1962: Cuban missile crisis, a nuclear confrontation takes place between the United States and the Soviet Union", "November 22, 1963: President John F. Kennedy is assassinated by a sniper in Dallas, Texas - Vice President Lyndon B. Johnson is sworn in as President", "1964: The Civil Rights Act of 1964 is signed into law"],
 
-  "1964": ["1965: Pres. Johnson escalates United States military involvement in the Vietnam War dramatically with troops totaling more than 184,000", "1965: Malcolm X is assassinated, the Selma to Montgomery marches in Alabama and the Watt riots in Los Angeles mark a year of escalated unrest in the Civil Rights Movement", "1967: he Summer of Love took place, marking a defining period for the counterculture movement in the U.S.", "April 4, 1968: Dr. Martin Luther King Jr. is assasinated"],
+  "1964": ["1965: Pres. Johnson escalates United States military involvement in the Vietnam War dramatically with troops totaling more than 184,000", "1967: the Summer of Love takes place, marking a defining period for the counterculture movement in the U.S.", "April 4, 1968: Dr. Martin Luther King Jr. is assasinated"],
 
   "1968": ["July 20, 1969: Apollo 11: American astronauts land on the moon", "December 15, 1969: President Nixon announces the withdrawal of 50,000 U.S. troops from Vietnam; reaching the peak level of U.S. troops in Vietnam at 541,000"],
 
-  "1972": ["January 22, 1973: Roe v. Wade: The Supreme Court ruled that state laws banning abortion before 24 weeks as unconstitutional", "August 9, 1974: President Richard Nixon becomes the first and only President to resign from office - Gerald Ford is sworn in", "1975: Bill Gates founds Microsoft, Steve Jobs founds Apple a year later"],
+  "1972": ["June 17, 1972: Five men were arrested for the burglary of the Democratic National Committee headquarters at the Watergate complex in Washington, D.C","January 22, 1973: Roe v. Wade: The Supreme Court ruled that state laws banning abortion before 24 weeks as unconstitutional", "August 9, 1974: President Richard Nixon becomes the first and only President to resign from office - Gerald Ford is sworn in", "1975: Bill Gates founds Microsoft, Steve Jobs founds Apple a year later"],
 
   "1976": ["November 27, 1978: Harvey Milk, the first openly gay person elected to public office, and San Francisco Mayor George Moscone, were assassinated in San Francisco", "November 4, 1979: Iran hostage crisis begins after the U.S. embassy in Tehran is raided by activists of the Iranian Revolution", "June 1, 1980: CNN, the first 24-hour cable news channel"],
 
   "1980": ["March 30, 1981: President Reagan and three others were injured after an assassination attempt of the President", "August 2, 1981: Reaganomics: The Kemp-Roth Tax Cut was signed into law", "March 23, 1983: President Reagan proposes the Strategic Defense Initiative"],
 
-  "1984": ["November 3, 1986: Iran–Contra affair: The Lebanese magazine Ash-Shiraa first revealed that the United States had secretly sold weapons to Iran in exchange for American hostages, amid a U.S. arms embargo", "October 19, 1987: Black Monday: The Dow Jones Industrial Average fell 508 points in a single session, losing 22.6% of its value", "December 8, 1987: The Intermediate-Range Nuclear Forces Treaty was signed in Washington, D.C. between the U.S. and Soviet Union"],
+  "1984": ["November 3, 1986: Iran–Contra affair: The Lebanese magazine Ash-Shiraa reveals that the U.S. had secretly sold weapons to Iran in exchange for American hostages", "October 19, 1987: Black Monday: The Dow Jones Industrial Average fell 508 points in a single session, losing 22.6% of its value", "December 8, 1987: The Intermediate-Range Nuclear Forces Treaty was signed in Washington, D.C. between the U.S. and Soviet Union"],
 
-  "1988": ["June 1, 1980: The 1990 Chemical Weapons Accord was signed between the United States and the Soviet Union", "January 17, 1991: Operation Desert Storm: The United States invades Iraq in response to Iraqs annexation of Kuwait", "February 28: President George H.W. Bush announces a cease fire in the Gulf War", "1992: Riots in Los Angeles, spurred by the acquittal of four Los Angeles Police Department officers accused in the beating of Rodney King, took place, which resulted in over fifty deaths and $1 billion in damage"],
+  "1988": ["June 1, 1980: The 1990 Chemical Weapons Accord was signed between the United States and the Soviet Union", "January 17, 1991: Operation Desert Storm: The United States invades Iraq in response to Iraqs annexation of Kuwait - Pres. George H.W. Bush announces a cease fire 5 weeks later", "1992: Riots in Los Angeles, spurred by the acquittal of four LAPD officers accused in the beating of Rodney King, took place, which resulted in over fifty deaths and $1 billion in damage"],
 
   "1992": ["February 26, 1993: A truck bomb explodes in the parking garage under the World Trade Center in Manhattan, killing six people and injuring 1,042 others.", "November 30, 1993: The Don't ask, don't tell policy, prohibiting openly gay and bisexual people from serving in the military, was signed into law", "November 8, 1994: The Republican Party picked up 54 seats in the House and 8 seats in the Senate, being one of the largest shifts in party balance in U.S. congressional history"],
 
@@ -191,7 +194,21 @@
         .attr("width", width)
         .attr("height", height);
 
+    svg.append("foreignObject")
+      .attr("width", 200)
+    .attr("height", 100)
+    .attr("x",500)
+    .attr("y",480)
+    .attr("id", "event1")
+    .append("xhtml:body")
+    .html("<p>1912: Former President Theodore Roosevelt left the Republican Party and launched an unsuccessful campaign as a Progressive Candidate (In Green)</p>");
+
     loadData();
+
+    //       .attr("width", 120)
+    // .attr("height", 200)
+    // .attr("x",800)
+    // .attr("y",300)
 
   }
 
@@ -259,22 +276,24 @@
   n = 0
   current_year = attributeArray[currentAttribute].toString();
 
-  // "April 6, 1917: U.S. enters World War I"
-  $('#event1').text(events[current_year][0]).hide();
-  $('#event2').text(events[current_year][1]).hide();
-  $('#event3').text(events[current_year][2]).hide();
-  $('#event4').text(events[current_year][3]).hide();
+  var current = events[current_year]
+  // var eventIndex = -1;
 
- console.log(events[1])
-  $("#event1").fadeIn(2000, function() {
-      $("#event2").fadeIn(2000, function() {
-            $("#event3").fadeIn(2000, function() {
-            
-    
-        });
-   
-      });
-  });
+  var eventPane = $('#event1')
+
+  function showNextEvent() {
+
+    for (var i=0; i<3; i++){
+      
+
+        $('#event1')
+            .fadeIn(300).text(current[i])
+            .delay(2000)
+            .fadeOut(300, showNextEvent);
+      }
+    }
+
+    showNextEvent();
 
 }
 
@@ -325,14 +344,9 @@
           $(id).addClass(settings.datesSelectedClass);
           $('#clock').html(attributeArray[currentAttribute]);
 
-        $('#event1').fadeOut();
-        $('#event2').fadeOut();
-        $('#event3').fadeOut();
-        $('#event4').fadeOut();
-
           setPics();
 
-        }, 6000);
+        }, 8000);
 
         d3.select(this).html('stop');
         playing = true;

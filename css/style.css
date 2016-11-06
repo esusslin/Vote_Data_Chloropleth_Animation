@@ -24,6 +24,17 @@ html {
    	overflow: hidden;
 }
 
+#event1 {
+
+   	float: left;
+   	overflow: hidden;
+}
+
+#eventDiv {
+	width: 100px; /*Put your desired width*/
+    height: 100px;
+}
+
 #play-button {
   font-size: 2em;
   margin-left: 40%;
@@ -46,7 +57,7 @@ html {
 
 
 #pics {
-   	padding-top: 130px;
+   	padding-top: 80px;
    	padding-bottom: 10px;
   	display: flex;
 
