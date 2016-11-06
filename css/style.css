@@ -14,9 +14,14 @@ html {
 }
 
 #events {
+
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
 	padding-top: 10px;
    	float: right;
    	height: 300; 
+   	overflow: hidden;
 }
 
 #play-button {
