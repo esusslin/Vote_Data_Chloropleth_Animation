@@ -53,12 +53,12 @@ Final Product:
 
 [![Alt text](pics/ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
 
+
+## Contributors
+
 Contributors:
 [Ronu Ghoshal](https://github.com/RonuGhoshal)
 [Emmet Susslin](https://github.com/esusslin)
 
-Data Source: [Dave Leip's Atlas of U.S. Presidential Elections](http://uselectionatlas.org)
-
-## License
 
 A short snippet describing the license (MIT, Apache, etc.)
