@@ -1,6 +1,6 @@
 require 'csv'
 
-data = File.new('1944.csv')
+data = File.new('1948.csv')
 parsed_data = data.to_a.join()
 csv_data = (CSV.new(parsed_data, :headers => true, :header_converters => :symbol)).to_a.map {|row| row.to_hash}
 
