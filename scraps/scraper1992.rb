@@ -89,7 +89,7 @@ if fips.length > 0
 
 		x = headers.index("%Margin")
 
-		y = headers.index("Bush")
+		y = headers.index("Trump")
 
 		z = headers.index("Clinton")
 

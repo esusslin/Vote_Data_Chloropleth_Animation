@@ -47,7 +47,7 @@ if fips.length > 0
 
 		heads = []
 
-		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=2012&datatype=town&def=1&f=0&off=0&elect=0")
+		driver.get("http://uselectionatlas.org/RESULTS/data.php?fips=" + fip + "&year=2016&datatype=town&def=1&f=0&off=0&elect=0")
 
 		# perks = driver.find_elements(:class, "rgt")
 		# headerz = driver.find_elements(:class, "tablesorter-header-inner")
@@ -89,9 +89,9 @@ if fips.length > 0
 
 		x = headers.index("%Margin")
 
-		y = headers.index("Romney")
+		y = headers.index("Trump")
 
-		z = headers.index("Obama")
+		z = headers.index("Clinton")
 
 		eval = "-" + percs[x]
 
@@ -121,7 +121,7 @@ if fips.length > 0
 	end
 end
 
-CSV.open("2012.csv", "wb") do |csv|
+CSV.open("2016.csv", "wb") do |csv|
   all.each do |this|
    csv << this
   end
