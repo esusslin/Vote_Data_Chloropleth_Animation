@@ -5,7 +5,7 @@ parsed_data = data.to_a.join()
 csv_data = (CSV.new(parsed_data, :headers => true, :header_converters => :symbol)).to_a.map {|row| row.to_hash}
 
 csv_data.each do |row|
-  rgb = [row[:dewey], row[:other], row[:truman]].map do |candidate|
+  rgb = [row[:republican], row[:other], row[:democrat]].map do |candidate|
       (candidate.to_f * 2.55).to_i
   end
   num_as_hex = ""

@@ -1,41 +1,57 @@
 # Vote_Data_Chloropleth_Animation
 
-## Synopsis
-
 This project aims to provide a visual representation of the evolution of regional political party identity in the United States over the past 100 years.  The dataset used for this project is the comprehensive voting data - per county - of all U.S. Presidential Elections from 1912-2012.
 
-Data Source: 
 
-[Dave Leip's Atlas of U.S. Presidential Elections](http://uselectionatlas.org)
+## The Story
 
-Contributors:
+After independently researching D3.js in early 2016 we both decided we'd like to explore the visualization of comprehensive voting data in the United States - should we be able to get our hands on it.  
 
-[Ronu Ghoshal](https://github.com/RonuGhoshal)
-[Emmet Susslin](https://github.com/esusslin)
+We were interested in the "red state" vs. "blue state" dichotomy in modern political discourse.  While these distinct regions seem so reliable during a single election season, the regional identity of political party affiliation in the United States has evolved dramatically over time.
 
-## Code Example
+In October 2016 we meticulously gathered our data set and visualized 100 years of voting data in U.S. Presidential Elections from 1912-2012.
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+## The Data
 
-## Motivation
+After a lot of independent research we found that the best public resource for comprehensive voting data in the United States was [Dave Leip's Atlas of U.S. Presidential Elections](http://uselectionatlas.org).  Mr. Leip's data collection is unrivaled and instrumental for this project.  With a membership to Mr. Leip's site we were able to access and compile the voting data we needed. 
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+We used [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver) to pull the voting data for each county (there are over 3,100 counties in the U.S.) for each election year from 1912-2012.  Altogether we had to scrape this data from some 80,000+ URLs.
 
-## Installation
 
-Provide code examples and explanations of how to get the project.
+## Mapping the Data in Color
 
-## API Reference
+We had originally intended to visualize the evolution of "red" vs. "blue" areas of the U.S. but right away we realized we had an issue: 3rd Party candidates.  To properly represent the impact of 3rd Party Candidates we decided to use the percentages of the Republican, Democrat, and the collective 'other' candidates to create a single color to represent a given county for a given election year.  Since red, green and blue constitute the triangular parents of all color in the RGB scale we allocated the collective 'other' percentages to the color green.
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+To achieve a single color representation for a given county on a given election year we shot the 'red', 'blue' and 'other' voting percentages through the following code to convert 'color' of each county to a single hexidecimal code.
 
-## Tests
+```ruby
+csv_data.each do |row|
+  rgb = [row[:republican], row[:other], row[:democrat]].map do |candidate|
+      (candidate.to_f * 2.55).to_i
+  end
+  num_as_hex = ""
+  rgb.each do |component|
+    hex = component.to_s(16)
+    if component < 16
+      num_as_hex << "0#{hex}"
+    else
+      num_as_hex << hex
+    end
+    row[:hex_color] = num_as_hex
+  end
+  puts row[:hex_color]
+end
+```
 
-Describe and show how to run the tests with code examples.
+
 
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+Contributors:
+[Ronu Ghoshal](https://github.com/RonuGhoshal)
+[Emmet Susslin](https://github.com/esusslin)
+
+Data Source: [Dave Leip's Atlas of U.S. Presidential Elections](http://uselectionatlas.org)
 
 ## License
 
