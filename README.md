@@ -49,9 +49,18 @@ end
 
 After converting our comprehensive dataset into a large set of hexidecial codes were were able to animate the color of American voting data through a chloropleth map of the United States.  This single demonstration provides a visual representation of the evolution of 'Republican' and 'Democrat' regional identities in the United States as the population and party platforms have evolved in the past 100 years.
 
-Final Product:
+## Final Product:
 
 [![Alt text](pics/ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
+
+## 100 years of POTUS elections in 12 seconds:
+
+![alt tag](pics/gif.gif)
+
+
+## Next
+
+Once time permits we both plan on pursuing thorough analysis of the 2016 Election Data.  As it is well known the 2016 election results were a big surprise to many pre-election polls and surveys.  Now that the voting data is official and publicly available we look forward to revisiting and expanding this project in 2017.
 
 
 ## Contributors
@@ -59,6 +68,3 @@ Final Product:
 Contributors:
 [Ronu Ghoshal](https://github.com/RonuGhoshal)
 [Emmet Susslin](https://github.com/esusslin)
-
-
-A short snippet describing the license (MIT, Apache, etc.)
