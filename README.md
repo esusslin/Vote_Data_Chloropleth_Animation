@@ -18,11 +18,11 @@ After a lot of independent research we found that the best public resource for c
 We used [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver) to pull the voting data for each county (there are over 3,100 counties in the U.S.) for each election year from 1912-2012.  Altogether we had to scrape this data from some 80,000+ URLs.
 
 
-## Mapping the Data in Color
+## Mapping the Data to Color
 
 We had originally intended to visualize the evolution of "red" vs. "blue" areas of the U.S. but right away we realized we had an issue: 3rd Party candidates.  To properly represent the impact of 3rd Party Candidates we decided to use the percentages of the Republican, Democrat, and the collective 'other' candidates to create a single color to represent a given county for a given election year.  Since red, green and blue constitute the triangular parents of all color in the RGB scale we allocated the collective 'other' percentages to the color green.
 
-To achieve a single color representation for a given county on a given election year we shot the 'red', 'blue' and 'other' voting percentages through the following code to convert 'color' of each county to a single hexidecimal code.
+To achieve a single color representation for a given county on a given election year we shot the 'red', 'blue' and 'other' voting percentages through the following code to convert 'color' of each county to a single hexidecimal code:
 
 ```ruby
 csv_data.each do |row|
@@ -45,7 +45,13 @@ end
 
 
 
-## Contributors
+## Animating the Map
+
+After converting our comprehensive dataset into a large set of hexidecial codes were were able to animate the color of American voting data through a chloropleth map of the United States.  This single demonstration provides a visual representation of the evolution of 'Republican' and 'Democrat' regional identities in the United States as the population and party platforms have evolved in the past 100 years.
+
+Final Product:
+
+[![Alt text](ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
 
 Contributors:
 [Ronu Ghoshal](https://github.com/RonuGhoshal)
