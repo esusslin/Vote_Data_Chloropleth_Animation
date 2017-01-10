@@ -28,7 +28,7 @@
   <div class="row">
     <div id="map" class="col-md-9">
     </div>
-    <div id="pics" class="col-md-3">
+    <!-- <div id="pics" class="col-md-3">
 
         <img src="pics\1912\D.jpg" id="pic1" class="img-circle" alt="Cinque Terre" width="80c" height="80"></img>
         <span id="dem-name">Woodrow Wilson</span><span id="dem-span"><br>6,294,284<br><br></span>
@@ -41,15 +41,15 @@
         <div id="eventDiv">
           <!-- <h2 id="event1">EVENT #1</h2> -->
           </div>
-    </div>
+    </div> -->
 
            
 </div>
 
   </div>
 
-  <!-- <h2 id="event1">EVENT #1</h2> -->
-  <div id="timeline" class="col-md-7">
+ 
+<!--   <div id="timeline" class="col-md-7">
     <ul id="dates">
         <li><a id="1912">1912</a></li>
         <li><a id="1916">1916</a></li>
@@ -78,7 +78,7 @@
         <li><a id="2008">2008</a></li>
         <li><a id="2012">2012</a></li>
     </ul>
-  </div>
+  </div>  -->
 
 <!--   <div id="events" class="col-md-3">
               <h2 id="event1">EVENT #1</h2>
@@ -99,11 +99,11 @@
 
    var events = {
 
- "1916": ["May 15, 1917: First regular airmail service begins, with one round trip a day between Washington, DC, and New York", "1920: Worldwide influenza epidemic strikes. Nearly 20 million people die worldwide - 500,000 in the U.S."],
+ "1916": ["May 15, 1917: First regular airmail service begins", "April 6, 1917: The U.S. declares war on Germany and enters WWI", "1920: Worldwide influenza epidemic strikes. Nearly 20 million people die worldwide - 500,000 in the U.S."],
 
- "1920": ["July 2, 1920: Pres. Warren G. Harding signs resolution declaring peace with Austria and Germany", "August 2, 1923: President Harding dies suddenly. He is succeeded by his vice president, Calvin Coolidge", ""],
+ "1920": ["July 2, 1920: Pres. Warren G. Harding signs resolution declaring peace with Austria and Germany", "August 2, 1923: President Harding dies suddenly, President Calvin Coolidge is sworn in", "May 26, 1924: he Immigration Act Basic Law was signed into law"],
 
- "1924": ["May 10, 1924: J. Edgar Hoover is appointed director of the Bureau of Investigation", "May 20-21, 1927: Charles Lindbergh makes the first solo nonstop transatlantic flight in his plane The Spirit of St. Louis", ""],
+ "1924": ["May 10, 1924: J. Edgar Hoover is appointed director of the Bureau of Investigation", "May 20-21, 1927: Charles Lindbergh makes the first solo nonstop transatlantic flight in his plane The Spirit of St. Louis", "November 15, 1926: The broadcast network NBC was founded"],
 
  "1928": ["October 29, 1929: Stock market crash precipitates the Great Depression", "May 1, 1931: The Empire State Building opened in New York City", "January 12, 1932: Hattie Wyatt Caraway of Arkansas is the first woman elected to the U.S. Senate"],
 
@@ -194,14 +194,14 @@
         .attr("width", width)
         .attr("height", height);
 
-    svg.append("foreignObject")
-      .attr("width", 200)
-    .attr("height", 100)
-    .attr("x",500)
-    .attr("y",480)
-    .attr("id", "event1")
-    .append("xhtml:body")
-    .html("<p>1912: Former President Theodore Roosevelt left the Republican Party and launched an unsuccessful campaign as a Progressive Candidate (In Green)</p>");
+    // svg.append("foreignObject")
+    //   .attr("width", 200)
+    // .attr("height", 100)
+    // .attr("x",500)
+    // .attr("y",480)
+    // .attr("id", "event1")
+    // .append("xhtml:body")
+    // .html("<p>1912: Former President Theodore Roosevelt left the Republican Party and launched an unsuccessful campaign as a Progressive Candidate (In Green)</p>");
 
     loadData();
 
@@ -257,70 +257,75 @@
 
   function sequenceMap() {
     d3.selectAll('.county').transition()
-      .duration(1000)
+      .duration(400)
       .attr('fill', function(d){
         return '#' + d.properties[attributeArray[currentAttribute]];
       })
-       current_year = attributeArray[currentAttribute].toString();
-            $('#dem-name').html(facts[current_year]["D"][0]);
-            $('#dem-span').html("<br>" + facts[current_year]["D"][1] + "<br><br>");
-            $('#rep-name').html(facts[current_year]["R"][0]);
-            $('#rep-span').html("<br>" + facts[current_year]["R"][1] + "<br><br>");
-            $('#other-name').html(facts[current_year]["O"][0]);
-            $('#other-span').html("<br>" + facts[current_year]["O"][1] + "<br><br>");
+       // current_year = attributeArray[currentAttribute].toString();
+       //      $('#dem-name').html(facts[current_year]["D"][0]);
+       //      $('#dem-span').html("<br>" + facts[current_year]["D"][1] + "<br><br>");
+       //      $('#rep-name').html(facts[current_year]["R"][0]);
+       //      $('#rep-span').html("<br>" + facts[current_year]["R"][1] + "<br><br>");
+       //      $('#other-name').html(facts[current_year]["O"][0]);
+       //      $('#other-span').html("<br>" + facts[current_year]["O"][1] + "<br><br>");
             
   }
 
-  function sequenceEvents() {
+//   function sequenceEvents(n) {
 
-  n = 0
-  current_year = attributeArray[currentAttribute].toString();
+//   x = -1
 
-  var current = events[current_year]
-  // var eventIndex = -1;
 
-  var eventPane = $('#event1')
+//   showFirstEvent();
 
-  function showNextEvent() {
 
-    for (var i=0; i<3; i++){
-      
+//   function showEvent() {
 
-        $('#event1')
-            .fadeIn(300).text(current[i])
-            .delay(2000)
-            .fadeOut(300, showNextEvent);
-      }
-    }
+    
+//     x += 1
+//         $('#event1')
+//             .fadeIn(1000).text(events[n][x])
+//             .delay(3000)
+//             .fadeOut(1000, showFirstEvent());
+            
+//     }
+// }
 
-    showNextEvent();
+// function showFirstEvent() {
 
-}
+    
+//     x += 1
+//         $('#event1')
+//             .fadeIn(1000).text(events[n][x])
+//             .delay(3000)
+//             .fadeOut(1000, showFirstEvent);
+            
+//     }
 
-  function setPics() {
-      pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
-      pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
-      pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
+//   function setPics() {
+//       pic1path = "pics/" + attributeArray[currentAttribute] + "/D.jpg"
+//       pic2path = "pics/" + attributeArray[currentAttribute] + "/R.jpg"
+//       pic3path = "pics/" + attributeArray[currentAttribute] + "/O.jpg"
 
-          $('#pic1').fadeOut(300, function() {
-            $('#pic1').attr("src",pic1path);
-            $('#pic1').fadeIn(300);
-          });
+//           $('#pic1').fadeOut(300, function() {
+//             $('#pic1').attr("src",pic1path);
+//             $('#pic1').fadeIn(300);
+//           });
 
-          $('#pic2').fadeOut(300, function() {
-            $('#pic2').attr("src",pic2path);
-            $('#pic2').fadeIn(300);
+//           $('#pic2').fadeOut(300, function() {
+//             $('#pic2').attr("src",pic2path);
+//             $('#pic2').fadeIn(300);
 
-          });
+//           });
 
-          $('#pic3').fadeOut(300, function() {
-            $('#pic3').attr("src",pic3path);
-            $('#pic3').fadeIn(300);
-          });
+//           $('#pic3').fadeOut(300, function() {
+//             $('#pic3').attr("src",pic3path);
+//             $('#pic3').fadeIn(300);
+//           });
 
-          sequenceEvents();
-          sequenceMap();
-  }
+//           sequenceEvents(attributeArray[currentAttribute]);
+//           sequenceMap();
+//   }
 
   function animateMap(){
     var timer;
@@ -334,19 +339,19 @@
             currentAttribute = 0;
           }
 
-
-          var widthDate = $(settings.datesDiv+' li').width();
-          var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
-          id = '#' + attributeArray[currentAttribute]
-          var currentIndex = $(id).parent().prevAll().length;
-          $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
-          $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
-          $(id).addClass(settings.datesSelectedClass);
+          sequenceMap()
+          // var widthDate = $(settings.datesDiv+' li').width();
+          // var defaultPositionDates = parseInt($(settings.datesDiv).css('marginLeft').substring(0,$(settings.datesDiv).css('marginLeft').indexOf('px')));
+          // id = '#' + attributeArray[currentAttribute]
+          // var currentIndex = $(id).parent().prevAll().length;
+          // $(settings.datesDiv).animate({'marginLeft':defaultPositionDates-(widthDate)});
+          // $(settings.datesDiv+' a').removeClass(settings.datesSelectedClass);
+          // $(id).addClass(settings.datesSelectedClass);
           $('#clock').html(attributeArray[currentAttribute]);
 
-          setPics();
+          // setPics();
 
-        }, 8000);
+        }, 500);
 
         d3.select(this).html('stop');
         playing = true;
