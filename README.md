@@ -2,7 +2,16 @@
 
 ## Synopsis
 
+This project aims to provide a visual representation of the evolution of regional political party identity in the United States over the past 100 years.  The dataset used for this project is the comprehensive voting data - per county - of all U.S. Presidential Elections from 1912-2012.
+
+Data Source: 
+
+[Dave Leip's Atlas of U.S. Presidential Elections](http://uselectionatlas.org)
+
+Contributors:
+
 [Ronu Ghoshal](https://github.com/RonuGhoshal)
+[Emmet Susslin](https://github.com/esusslin)
 
 ## Code Example
 
