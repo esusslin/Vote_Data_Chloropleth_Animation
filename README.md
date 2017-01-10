@@ -51,7 +51,7 @@ After converting our comprehensive dataset into a large set of hexidecial codes 
 
 Final Product:
 
-[![Alt text](ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
+[![Alt text](pics/ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
 
 Contributors:
 [Ronu Ghoshal](https://github.com/RonuGhoshal)
