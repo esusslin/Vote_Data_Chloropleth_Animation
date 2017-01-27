@@ -55,9 +55,9 @@ This single demonstration provides a visual representation of the evolution of '
 
 [![Alt text](pics/ss.png)](https://www.youtube.com/watch?v=76Ki5PYN2qk)
 
-For those of you short on time, here is a 100 years of U.S. Presential Election voting behavior in 12 seconds:
+For those of you short on time, here is a 100 years of U.S. Presential Election voting behavior in 27 seconds:
 
-![alt tag](pics/gif.gif)
+![alt tag](gif.gif)
 
 
 ## Next
